@@ -286,29 +286,39 @@
 /*******your blogs style*********************/
 
 .blogs {
-	background-color: #f4e5f6;
-	font-family: "Open Sans", sans-serif;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	height: 80vh;
-	
-	margin-top:0px;
+  background-color: #f4e5f6;
+  font-family: "Open Sans", sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh; /* Change height to min-height */
+  margin-top: 0px;
+  padding: 20px; /* Add padding for better spacing */
+}
+
+.blogs .container-blogs {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Use auto-fill to automatically adjust column count */
+  gap: 20px;
+  max-width: 1200px; /* Set a maximum width for better responsiveness */
+  margin: auto;
+}
+
+.blogs .card {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  /* width: 300px; Remove fixed width */
+  max-width: 100%; /* Allow cards to expand to the available width */
+}
+
+@media (max-width: 768px) {
+  .blogs .container-blogs {
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Adjust column count for smaller screens */
   }
-  .blogs .container-blogs{
-	display: grid;
-	grid-template-columns: repeat(3, 1fr);
-	gap: 20px;
-	width: 940px;
-	margin: auto;
-  }
-  .blogs .card {
-	background-color: #fff;
-	border-radius: 10px;
-	box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
-	overflow: hidden;
-	width: 300px;
-  }
+}
+
   .blogs .card-header img {
 	width: 100%;
 	height: 200px;

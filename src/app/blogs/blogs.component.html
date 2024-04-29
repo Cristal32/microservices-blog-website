@@ -119,8 +119,9 @@
         
         <section class="blogs" style="margin-bottom: 0px;" *ngIf="blogs.length > 0">
 			<div class="container-blogs">
-			  <div class="card" *ngFor="let blogResponse of blogs" (click)="showBlogDetail(blogResponse)">
-				<div class="card-header">
+
+			  <div class="card" *ngFor="let blogResponse of blogs" (click)="showBlogDetail(blogResponse)" style="margin-top: 30px;">
+				<div class="card-header" >
 				  <img [src]="'data:image/jpeg;base64,'+blogResponse.blog.image" alt="" />
 				</div>
 				<div class="card-body">
