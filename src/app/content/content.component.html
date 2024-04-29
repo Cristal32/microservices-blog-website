@@ -1,0 +1,165 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+    <head>
+        <!-- meta data -->
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+        <!--font-family-->
+		<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&amp;subset=devanagari,latin-ext" rel="stylesheet">
+        
+        <!-- title of site -->
+        <title>Travel</title>
+
+        <!-- For favicon png -->
+		<link rel="shortcut icon" type="image/icon" href="/assets/logo/favicon.png"/>
+       
+        <!--font-awesome.min.css-->
+        <link rel="stylesheet" href="/assets/css/font-awesome.min.css">
+
+		<!--flat icon css-->
+		<link rel="stylesheet" href="/assets/css/flaticon.css">
+
+		<!--animate.css-->
+        <link rel="stylesheet" href="/assets/css/animate.css">
+
+        <!--owl.carousel.css-->
+        <link rel="stylesheet" href="/assets/css/owl.carousel.min.css">
+		<link rel="stylesheet" href="/assets/css/owl.theme.default.min.css">
+		
+        <!--bootstrap.min.css-->
+        <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+		
+		<!-- bootsnav -->
+		<link rel="stylesheet" href="/assets/css/bootsnav.css" >	
+        
+        <!--style.css-->
+        <link rel="stylesheet" href="/assets/css/style.css">
+        
+        <!--responsive.css-->
+        <link rel="stylesheet" href="/assets/css/responsive.css">
+        
+      
+
+    </head>
+	
+	<body>
+	
+		
+		<!-- top-area Start -->
+		<header class="top-area">
+			<div class="header-area">
+				<!-- Start Navigation -->
+			    <nav class="navbar navbar-default bootsnav navbar-fixed dark  no-background   navbar-sm " >
+
+			        <div class="container" >
+
+			            <!-- Start Header Navigation -->
+			            <div class="navbar-header">
+			                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
+			                    <i class="fa fa-bars"></i>
+			                </button>
+							<a class="navbar-brand" href="content" style="color:black" > <i class="fa fa-map-marker" style="font-size: 35px;  color:red ;filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.5))"></i> {{blog.country}}</a>
+			            </div><!--/.navbar-header-->
+			            <!-- End Header Navigation -->
+
+			            <!-- Collect the nav links, forms, and other content for toggling -->
+			            <div class="collapse navbar-collapse menu-ui-design" id="navbar-menu">
+			                <ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
+			                <li class=" smooth-menu active"></li>
+							<li class="smooth-menu"><a href="home"><i class="fa fa-home" aria-hidden="true"></i> Home</a></li>
+								<li class="smooth-menu"><a href="sign-in"><i class="fa fa-sign-out" aria-hidden="true"></i> Sign out</a></li>
+			                 
+			                   
+			                </ul><!--/.nav -->
+			            </div><!-- /.navbar-collapse -->
+			        </div><!--/.container-->
+			    </nav><!--/nav-->
+			    <!-- End Navigation -->
+			</div><!--/.header-area-->
+
+		    <div class="clearfix"></div>
+
+		</header><!-- /.top-area-->
+		<!-- top-area End -->
+	
+		<div *ngIf="blog">
+			<h1 class="titre1">{{ blog.title }}</h1>
+			<section id="first-content">
+				<div class="wrapper">
+					<div class="image-box">
+						<!-- Utilisez la syntaxe de liaison de données Angular sans les guillemets -->
+						<img [src]="'data:image/jpeg;base64,' + blog.image" alt="hhh">
+					</div>
+					<div class="text-box">
+						<div>
+							<h2>{{ blog.country }}</h2>
+							<p>{{ blog.description }}</p>
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
+		
+    
+	
+
+     
+	
+		
+		<!--footer-copyright start-->
+		<footer id="footer-copyright" class="footer-copyright">
+			<div class="container">
+				<div class="hm-footer-copyright text-center">
+					<p>
+						&copy; copyright. design and developed by <a href="https://www.themesine.com/">gl</a>
+					</p><!--/p-->
+				</div><!--/.text-center-->
+			</div><!--/.container-->
+
+			<div id="scroll-Top">
+				<div class="return-to-top">
+					<i class="fa fa-angle-up " id="scroll-top" ></i>
+				</div>
+				
+			</div><!--/.scroll-Top-->
+			
+        </footer><!--/.footer-copyright-->
+		<!--footer-copyright end-->
+		
+		<!-- Include all js compiled plugins (below), or include individual files as needed -->
+
+		<script src="/assets/js/jquery.js"></script>
+        
+        <!--modernizr.min.js-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+		
+		<!--bootstrap.min.js-->
+        <script src="/assets/js/bootstrap.min.js"></script>
+		
+		<!-- bootsnav js -->
+		<script src="/assets/js/bootsnav.js"></script>
+		
+		<!-- jquery.sticky.js -->
+		<script src="/assets/js/jquery.sticky.js"></script>
+		
+		<!-- for progress bar start-->
+
+		<!-- progressbar js -->
+		<script src="/assets/js/progressbar.js"></script>
+
+		<!-- appear js -->
+		<script src="/assets/js/jquery.appear.js"></script>
+
+		<!-- for progress bar end -->
+
+
+
+
+
+    </body>
+	
+</html>

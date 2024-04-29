@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <title>Form</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<div class="container" >
+  <div class="title">Edit Profile</div>
+  <div class="content" *ngIf="u">
+    <form (submit)="editProfile()" action="#">
+      <div class="user-details">
+        <div class="input-box">
+          <span class="details">Full Name</span>
+          <input type="text" [(ngModel)]="u.name" name="name" required>
+        </div>
+        <div class="input-box">
+          <span class="details">Address</span>
+          <input type="text" [(ngModel)]="u.adresse" name="adresse" required>
+        </div>
+        <div class="input-box">
+          <span class="details">Email</span>
+          <input type="text"  [(ngModel)]="u.email" name="email" required>
+        </div>
+        <div class="input-box">
+          <span class="details">Phone Number</span>
+          <input type="text" [(ngModel)]="u.phone" name="phone" required>
+        </div>
+        <div class="input-box">
+          <span class="details">Password</span>
+          <input type="password"  placeholder="update your password" name="password">
+        </div>
+        <div class="input-box">
+          <span class="details">Confirm Password</span>
+          <input type="password" placeholder="Confirm your password">
+        </div>
+      </div>
+      <div class="gender-details">
+        <input type="radio" name="gender" id="dot-1" value="1" [(ngModel)]="u.gender">
+        <input type="radio" name="gender" id="dot-2" value="0" [(ngModel)]="u.gender">
+        
+        <span class="gender-title">Gender</span>
+        <div class="category">
+          <label for="dot-1">
+            <span class="dot one"></span>
+            <span class="gender">Male</span>
+          </label>
+          <label for="dot-2">
+            <span class="dot two"></span>
+            <span class="gender">Female</span>
+          </label>
+        </div>
+      </div>
+      
+      <div class="button">
+        <input type="submit" value="Register"> 
+        <input type="button" style="margin-left: 7cm" (click)="closeModalAndReload()" value="Close">
+      </div>
+    </form>
+  </div>
+</div>
+
+</body>
+</html>
