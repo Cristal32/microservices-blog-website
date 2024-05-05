@@ -1,0 +1,38 @@
+
+eureka:
+  client:
+    register-with-eureka: false
+server:
+  port: 8222
+spring:
+  application:
+    name: gateway
+
+  cloud:
+    gateway:
+      default-filters:
+        - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedMethods: "*"
+            allowedHeaders: "*"
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: user
+          uri: http://localhost:9098
+          predicates:
+            - Path=/users/**
+
+        - id: blog
+          uri: http://localhost:9097
+          predicates:
+            - Path=/blogs/**
+
+management:
+  tracing:
+    sampling:
+      probability: 1.0
