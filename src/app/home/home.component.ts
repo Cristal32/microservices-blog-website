@@ -2,7 +2,9 @@ import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material/dial
 import { Router } from '@angular/router'; // Import Router
 import { EditComponent } from '../edit/edit.component';
 
-import imageCompression from 'browser-image-compression';
+
+
+
 
 import {Blog} from '../../models/blog';
 
@@ -13,162 +15,181 @@ import { Component, OnInit } from '@angular/core';
 import { user } from '../../models/user';
 import { RestapiService } from '../../services/restapi.service';
 import { FormsModule } from '@angular/forms';
+import { TranslationService } from '../../services/translation.service';
 
-
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule,FormsModule],
+  imports: [CommonModule,FormsModule,TranslateModule],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.css'
+  styleUrl: './home.component.css',
+ 
 })
 export class HomeComponent {
-  
   dialogConfig = new MatDialogConfig();
   modalDialog: MatDialogRef<EditComponent, any> | undefined;
   title: string = '';
   country: string = '';
   description: string = '';
-  base64Image: string = ''
-  image: File | null = null; // Initialize as n
+  base64Image: string = '';
+  image: File | null = null; // Initialize as null
+  translatedBlogs: { [key: number]: { title: string, description: string } } = {};
+  public id: number = 1;
+  u: user = {} as user;
+  firstname: string = '';
+  imagePath: string = '';
+  blogs: Blog[] = [];
+  currentDate = new Date();
+  formattedDate = this.currentDate.toISOString().split('T')[0];
 
-  constructor(private router: Router, public matDialog: MatDialog ,private service:RestapiService){ } // Inject Router
-  public  id:number=1
-   
+  constructor(
+    private router: Router, 
+    public matDialog: MatDialog,
+    private service: RestapiService,
+    private translate: TranslateService,
+    private translationService: TranslationService
+  ) {
+    this.translate.setDefaultLang('en');
+    const browserLang = this.translate.getBrowserLang();
+    if (browserLang && browserLang.match(/en|fr/)) {
+      this.translate.use(browserLang);
+    } else {
+      this.translate.use('en');
+    }
+  }
+
   ngOnInit() {
     this.id = Number(sessionStorage.getItem('uId'));
-    console.log(this.id)
-    this.getProfile()
-    this.getBlogsByUserId()
-
-
+    console.log(this.id);
+    this.getProfile();
+    this.getBlogsByUserId();
   }
-  
+
   openModal() {
     this.dialogConfig.id = "edit-component";
     this.dialogConfig.height = "600px";
     this.dialogConfig.width = "600px";
     this.modalDialog = this.matDialog.open(EditComponent, this.dialogConfig);
   }
-  
+
   scrollTo(element: any): void {
-    (document.getElementById(element) as HTMLElement).scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
+    (document.getElementById(element) as HTMLElement).scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+      inline: "nearest"
+    });
   }
 
-  // Method to navigate to blogs component
   navigateToBlogs() {
     this.router.navigate(['/blogs']); 
   }
 
-
   showBlogDetail(blog: Blog): void {
-    console.log('blog:', blog); // Add this line
+    console.log('blog:', blog);
     if (blog?.blogId) {
       this.router.navigate(['/content', blog.blogId]);
     } else {
-      console.error('blog.blogid is undefined or null');
+      console.error('blog.blogId is undefined or null');
     }
   }
 
-  //getprofile
-  u :user = { } as user
+  getProfile() {
+    this.service.getProfile(this.id).subscribe(
+      (response: user) => {
+        this.u = response;
+        console.log(this.u);
+        if (this.u.name) {
+          const fullNameParts = this.u.name.split(' ');
+          this.firstname = fullNameParts[0];
+        }
+        this.imagePath = this.u.gender == "0" ? "/assets/images/fille.jpg" : "/assets/images/gar.png";
+        this.u.imagePath = this.imagePath;
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+        alert('Erreur ');
+      }
+    );
+  }
 
-  firstname:string=''
-  imagePath:string=''
+  getFirstName(fullName: string): string {
+    const firstName = fullName.split(' ')[0];
+    return firstName.charAt(0).toUpperCase() + firstName.slice(1);
+  }
+
+  onImageSelected(event: any) {
+    this.image = event.target.files[0];
+  }
+
+  addBlog(): void {
+    if (!this.image) {
+      console.error('No image selected');
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append('title', this.title);
+    formData.append('description', this.description);
+    formData.append('country', this.country);
+    formData.append('date', this.formattedDate);
+    formData.append('imageFile', this.image);
+
+    this.service.addBlog(formData, this.id).subscribe(
+      (response: any) => {
+        console.log('Réponse du serveur:', response);
+        alert('Opération réussie');
+        window.location.reload();
+      },
+      (error: any) => {
+        console.error('Erreur lors de l\'envoi des données:', error);
+        alert('Erreur lors de l\'envoi des données');
+      }
+    );
+  }
+
+  translateBlogs(): void {
+    const userLanguage = this.translate.currentLang;
+    console.log('Current user language:', userLanguage);
+
+    this.blogs.forEach(blog => {
+      const blogId = blog.blogId;
+      console.log('Processing blog ID:', blogId);
+
+      if (blogId !== undefined) {
+        this.translationService.translate(blog.title, userLanguage).subscribe(
+          (translatedTitle: string) => {
+            console.log(`Translated title for blog ID ${blogId}:`, translatedTitle);
+            this.translationService.translate(blog.description, userLanguage).subscribe(
+              (translatedDescription: string) => {
+                console.log(`Translated description for blog ID ${blogId}:`, translatedDescription);
+                this.translatedBlogs[blogId] = {
+                  title: translatedTitle,
+                  description: translatedDescription
+                };
+              },
+              error => console.log('Error translating description:', error)
+            );
+          },
+          error => console.log('Error translating title:', error)
+        );
+      }
+    });
+  }
 
 
- getProfile() {
-  this.service.getProfile(this.id).subscribe(
-    (response: user) => {
-      this.u = response;
-      console.log(this.u);
-      // Diviser le nom complet pour obtenir le prénom
-      if (this.u.name) {
-        const fullNameParts = this.u.name.split(' ');
-        // Le prénom est la première partie du nom complet
-        this.firstname = fullNameParts[0];
+  getBlogsByUserId(): void {
+    this.service.getBlogsByUserId(this.id).subscribe(
+      (data) => {
+        this.blogs = data;
+        this.translateBlogs();
+      },
+      
+      (error) => {
+        console.log('Error:', error);
       
       }
-      if(this.u.gender=="0"){
-         this.imagePath="/assets/images/fille.jpg";
-         this.u.imagePath = "/assets/images/fille.jpg";
-      }
-      else{
-          this.imagePath="/assets/images/gar.png";
-          this.u.imagePath = "/assets/images/gar.png";
-      }
-
-    },
-    (error: HttpErrorResponse) => {
-      alert(error.message);
-      alert('Erreur ')
-    }
-  );
-}
-
-
-getFirstName(fullName: string): string {
-  const firstName = fullName.split(' ')[0];
-  return firstName.charAt(0).toUpperCase() + firstName.slice(1);
-}
-
-
-
-onImageSelected(event: any) {
-  this.image = event.target.files[0];
-}
-
-
-// Get the current date
- currentDate = new Date();
-
-// Format the date as desired (e.g., YYYY-MM-DD)
- formattedDate = this.currentDate.toISOString().split('T')[0];
- addBlog(): void {
-  // Vérifiez si une image a été sélectionnée
-  if (!this.image) {
-    console.error('No image selected');
-    return;
+    );
   }
-
-  // Créez un nouvel objet FormData
-  const formData = new FormData();
-
-  // Ajoutez les données du blog à FormData
-  formData.append('title', this.title);
-  formData.append('description', this.description);
-  formData.append('country', this.country);
-  formData.append('date', this.formattedDate);
-  formData.append('imageFile', this.image); 
-
-  // Appelez le service pour ajouter le blog
-  this.service.addBlog(formData, this.id).subscribe(
-    (response: any) => {
-
-      console.log('Réponse du serveur:', response);
-      alert('Opération réussie');
-      window.location.reload(); 
-    },
-    (error: any) => {
-      console.error('Erreur lors de l\'envoi des données:', error);
-      alert('Erreur lors de l\'envoi des données');
-    }
-  );
-}
-
-//recuperer les blogs
-blogs: Blog[] = [];
-
-getBlogsByUserId(): void {
-  this.service.getBlogsByUserId(this.id).subscribe(
-    (data) => {
-      this.blogs = data;
-    },
-    (error) => {
-      console.log('Error:', error);
-    }
-  );
-  }
-
 }

@@ -381,3 +381,24 @@ color: #888785;
   justify-items: center;
 }
 }
+
+
+.like-section {
+  display: flex;
+  align-items: center;
+}
+.like-icon {
+  color: #000; /* Default color */
+  margin-right: 5px;
+  cursor: pointer;
+}
+.bx-heart {
+  color: black; /* Color when not liked */
+}
+.bxs-heart {
+  color: red; /* Color when liked */
+}
+.like-count {
+  font-size: 14px;
+  color: #555;
+}

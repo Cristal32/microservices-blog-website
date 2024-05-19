@@ -7,6 +7,8 @@ import { AppComponent } from './app.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
+
+import { HttpClient } from '@angular/common/http'; // Ensure HttpClient is imported
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { BlogsComponent } from './blogs/blogs.component';
@@ -17,14 +19,26 @@ import { RestapiService } from '../services/restapi.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+
 import { HomeComponent } from './home/home.component';
+import { SignInComponent } from './sign-in/sign-in.component';
+import { TestComponent } from './test/test.component';
+
+import { TranslationService } from '../services/translation.service';
+
+// Function to create TranslateLoader
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
 @NgModule({
   declarations: [
     AppComponent,
     BlogsComponent,
     ContentComponent,
+    TestComponent,
    
-
  
 
   ],
@@ -36,9 +50,17 @@ import { HomeComponent } from './home/home.component';
     MatButtonModule,
     MatDialogModule,
     HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    })
   ],
   providers: [
-  RestapiService
+  RestapiService,
+  TranslationService
   ],
   bootstrap: [AppComponent]
 })

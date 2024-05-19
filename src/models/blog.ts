@@ -7,5 +7,7 @@ export interface Blog{
     description : string;
     image:FormData
     date:string;
+    likes: number;  // Ajoutez cette ligne
+    liked?: boolean; // Ajoutez cette ligne (optionnelle)
 
 }

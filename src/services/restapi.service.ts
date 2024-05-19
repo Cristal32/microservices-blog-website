@@ -52,6 +52,10 @@ public getBlogsByCountry(country: string): Observable<BlogResponse[]> {
 
 
 
+
+
+
+
 getBlogById(blogid: number): Observable<Blog> {
   return this.http.get<Blog>(`http://localhost:8222/blogs/content/${blogid}`);
 }

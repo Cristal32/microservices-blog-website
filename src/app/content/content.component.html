@@ -87,23 +87,23 @@
 		<!-- top-area End -->
 	
 		<div *ngIf="blog">
-			<h1 class="titre1">{{ blog.title }}</h1>
+			<h1 class="titre1">{{ translatedTitle }}</h1>
 			<section id="first-content">
-				<div class="wrapper">
-					<div class="image-box">
-						<!-- Utilisez la syntaxe de liaison de données Angular sans les guillemets -->
-						<img [src]="'data:image/jpeg;base64,' + blog.image" alt="hhh">
-					</div>
-					<div class="text-box">
-						<div>
-							<h2>{{ blog.country }}</h2>
-							<p>{{ blog.description }}</p>
-						</div>
-					</div>
+			  <div class="wrapper">
+				<div class="image-box">
+				  <!-- Utilisez la syntaxe de liaison de données Angular sans les guillemets -->
+				  <img [src]="'data:image/jpeg;base64,' + blog.image" alt="hhh">
 				</div>
+				<div class="text-box">
+				  <div>
+					<h2>{{ translatedCountry }}</h2>
+					<p>{{ translatedDescription }}</p>
+				  </div>
+				</div>
+			  </div>
 			</section>
-		</div>
-		
+		  </div>
+		  
     
 	
 

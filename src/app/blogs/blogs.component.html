@@ -90,57 +90,53 @@
 
 
 
-		<!--welcome-hero start -->
-		<section id="about-home" class="hero3">
-            <h1>Journey Journals</h1>
-           
+		<!-- welcome-hero start -->
+<section id="about-home" class="hero3">
+	<h1>{{ 'JOURNEY_JOURNALS' | translate }}</h1>
+	<p>{{ 'EXPLORE_SHARE_INSPIRE' | translate }}</p>
+  </section>
 
- 
-            <p> Explore, Share, Inspire!</p>
-    
-        </section>
+  <!-- src/app/app.component.html -->
+<!--<h1>Bienvenue sur l'application de test de traduction</h1>
+<app-test></app-test>--->
 
-
-     
-
-
-        <section class="webdesigntuts-workshop" style="margin-top: -5px;">
-          <form #form="ngForm" (ngSubmit)="onSubmit(form)">
-            <select [(ngModel)]="selectedCountry" name="pays" id="pays" style="width: 7cm; height: 1.2cm; margin-right: 1cm;">
-              <option value="" selected disabled>What do you want to discover?</option>
-              <option *ngFor="let country of countries" [value]="country">{{ country }}</option>
-            </select>
-            <button type="submit">Search</button>
-          </form>
-        </section>
+  
+  <section class="webdesigntuts-workshop" style="margin-top: -5px;">
+	<form #form="ngForm" (ngSubmit)="onSubmit(form)">
+	  <select [(ngModel)]="selectedCountry" name="pays" id="pays" style="width: 7cm; height: 1.2cm; margin-right: 1cm;">
+		<option value="" selected disabled>{{ 'WHAT_TO_DISCOVER' | translate }}</option>
+		<option *ngFor="let country of countries" [value]="country">{{ country }}</option>
+	  </select>
+	  <button type="submit">{{ 'SEARCH' | translate }}</button>
+	</form>
+  </section>
+  
 
 
 
         
-        <section class="blogs" style="margin-bottom: 0px;" *ngIf="blogs.length > 0">
-			<div class="container-blogs">
-
-			  <div class="card" *ngFor="let blogResponse of blogs" (click)="showBlogDetail(blogResponse)" style="margin-top: 30px;">
-				<div class="card-header" >
-				  <img [src]="'data:image/jpeg;base64,'+blogResponse.blog.image" alt="" />
-				</div>
-				<div class="card-body">
-				  <span class="tag tag-teal">{{ blogResponse.blog.country }}</span>
-				  <h4>{{ blogResponse.blog.title }}</h4>
-				  <p>{{ blogResponse.blog.description }}</p>
-				  <div class="user">
-					<img [src]="blogResponse.imagePath" alt="" />
-					<div class="user-info">
-					  <h5>{{ blogResponse.name }}</h5>
-					  <small>{{blogResponse.blog.date}}</small> <!-- Replace 'date' with your actual date property -->
-					</div>
-				  </div>
-				</div>
-			  </div>
+  <section class="blogs" style="margin-bottom: 0px;" *ngIf="blogs.length > 0">
+	<div class="container-blogs">
+	  <div class="card" *ngFor="let blogResponse of blogs" (click)="showBlogDetail(blogResponse)" style="margin-top: 30px;">
+		<div class="card-header">
+		  <img [src]="'data:image/jpeg;base64,'+blogResponse.blog.image" alt="" />
+		</div>
+		<div class="card-body">
+		  <span class="tag tag-teal">{{ blogResponse.blog.country }}</span>
+		  <h4 *ngIf="blogResponse.blog.blogId">{{ translatedBlogs[blogResponse.blog.blogId]?.title || blogResponse.blog.title }}</h4>
+		  <p *ngIf="blogResponse.blog.blogId">{{ translatedBlogs[blogResponse.blog.blogId]?.description || blogResponse.blog.description }}</p>
+		  <div class="user">
+			<img [src]="blogResponse.imagePath" alt="" />
+			<div class="user-info">
+			  <h5>{{ blogResponse.name }}</h5>
+			  <small>{{ blogResponse.blog.date }}</small>
 			</div>
-			<!-- Add the BlogDetailComponent to display the detailed content -->
-		  </section>
-		  
+		  </div>
+		</div>
+	  </div>
+	</div>
+  </section>
+  
         
         
 

@@ -5,16 +5,28 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { user } from '../../models/user';
 import { RestapiService } from '../../services/restapi.service';
 import { FormsModule } from '@angular/forms';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-edit',
   standalone: true,
-  imports: [CommonModule,FormsModule],
+  imports: [CommonModule,FormsModule,TranslateModule],
   templateUrl: './edit.component.html',
   styleUrl: './edit.component.css'
 })
 export class EditComponent implements OnInit {
-  constructor(public dialogRef: MatDialogRef<EditComponent>,private service :RestapiService) { }
+  constructor(public dialogRef: MatDialogRef<EditComponent>,private service :RestapiService,private translate: TranslateService) {
+
+    this.translate.setDefaultLang('en');
+    
+    // Use browser language if available and falls back to 'en' if not matched
+    const browserLang = this.translate.getBrowserLang();
+    if (browserLang && browserLang.match(/en|fr/)) {
+      this.translate.use(browserLang);
+    } else {
+      this.translate.use('en');
+    }
+   }
  
   
   closeModal() {

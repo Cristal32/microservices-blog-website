@@ -1,67 +1,62 @@
 <!DOCTYPE html>
-
 <html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8">
-  <title>Form</title>
-
+  <title>{{ 'FORM_TITLE' | translate }}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-<div class="container" >
-  <div class="title">Edit Profile</div>
+<div class="container">
+  <div class="title">{{ 'EDIT_PROFILE_TITLE' | translate }}</div>
   <div class="content" *ngIf="u">
     <form (submit)="editProfile()" action="#">
       <div class="user-details">
         <div class="input-box">
-          <span class="details">Full Name</span>
+          <span class="details">{{ 'FORM_FULL_NAME' | translate }}</span>
           <input type="text" [(ngModel)]="u.name" name="name" required>
         </div>
         <div class="input-box">
-          <span class="details">Address</span>
+          <span class="details">{{ 'FORM_ADDRESS' | translate }}</span>
           <input type="text" [(ngModel)]="u.adresse" name="adresse" required>
         </div>
         <div class="input-box">
-          <span class="details">Email</span>
-          <input type="text"  [(ngModel)]="u.email" name="email" required>
+          <span class="details">{{ 'FORM_EMAIL' | translate }}</span>
+          <input type="text" [(ngModel)]="u.email" name="email" required>
         </div>
         <div class="input-box">
-          <span class="details">Phone Number</span>
+          <span class="details">{{ 'FORM_PHONE_NUMBER' | translate }}</span>
           <input type="text" [(ngModel)]="u.phone" name="phone" required>
         </div>
         <div class="input-box">
-          <span class="details">Password</span>
-          <input type="password"  placeholder="update your password"  [(ngModel)]="u.phone"  name="password">
+          <span class="details">{{ 'FORM_PASSWORD' | translate }}</span>
+          <input type="password" placeholder="{{ 'FORM_PASSWORD_PLACEHOLDER' | translate }}" [(ngModel)]="u.password" name="password">
         </div>
         <div class="input-box">
-          <span class="details">Confirm Password</span>
-          <input type="password" placeholder="Confirm your password">
+          <span class="details">{{ 'FORM_CONFIRM_PASSWORD' | translate }}</span>
+          <input type="password" placeholder="{{ 'FORM_CONFIRM_PASSWORD_PLACEHOLDER' | translate }}">
         </div>
       </div>
       <div class="gender-details">
         <input type="radio" name="gender" id="dot-1" value="1" [(ngModel)]="u.gender">
         <input type="radio" name="gender" id="dot-2" value="0" [(ngModel)]="u.gender">
-        
-        <span class="gender-title">Gender</span>
+        <span class="gender-title">{{ 'FORM_GENDER' | translate }}</span>
         <div class="category">
           <label for="dot-1">
             <span class="dot one"></span>
-            <span class="gender">Male</span>
+            <span class="gender">{{ 'FORM_GENDER_MALE' | translate }}</span>
           </label>
           <label for="dot-2">
             <span class="dot two"></span>
-            <span class="gender">Female</span>
+            <span class="gender">{{ 'FORM_GENDER_FEMALE' | translate }}</span>
           </label>
         </div>
       </div>
-      
       <div class="button">
-        <input type="submit" value="Register"> 
-        <input type="button" style="margin-left: 7cm" (click)="closeModalAndReload()" value="Close">
+        <input type="submit" value="{{ 'FORM_SUBMIT' | translate }}"> 
+        <input type="button" style="margin-left: 7cm" (click)="closeModalAndReload()" value="{{ 'FORM_CLOSE' | translate }}">
       </div>
     </form>
   </div>
 </div>
-
 </body>
 </html>

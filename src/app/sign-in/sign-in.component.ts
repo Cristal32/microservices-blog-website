@@ -5,16 +5,26 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
-
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-sign-in',
   standalone: true,
- imports: [CommonModule,FormsModule],
+  imports: [CommonModule, FormsModule, TranslateModule],
   templateUrl: './sign-in.component.html',
   styleUrl: './sign-in.component.css'
 })
 export class SignInComponent {
-constructor(private service:RestapiService ,private router: Router){}
+constructor(private service:RestapiService ,private router: Router,private translate: TranslateService){
+  this.translate.setDefaultLang('en');
+    
+    // Use browser language if available and falls back to 'en' if not matched
+    const browserLang = this.translate.getBrowserLang();
+    if (browserLang && browserLang.match(/en|fr/)) {
+      this.translate.use(browserLang);
+    } else {
+      this.translate.use('en');
+    }
+}
 added: user ={ } as user
 u: user ={ } as user
  public uId :number=0
