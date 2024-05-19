@@ -474,32 +474,37 @@
         </div>
 
         <!-- Blog -->
-       <section class="blogs" style="margin-top: -15px; margin-bottom:0px;" *ngIf="blogs && translatedBlogs">
-  <div class="container-blogs">
-    <div class="card" *ngFor="let blog of blogs" (click)="showBlogDetail(blog)">
-      <div class="card-header">
-        <img [src]="'data:image/jpeg;base64,' + blog.image" alt="Blog Image">
-      </div>
-      <div class="card-body" style="margin-top:30px;">
-        <span class="tag tag-teal">{{ blog.country }}</span>
-        <h4>{{ (blog.blogId !== undefined && translatedBlogs[blog.blogId]?.title) ? translatedBlogs[blog.blogId]?.title : blog.title }}</h4>
-        <p>{{ (blog.blogId !== undefined && translatedBlogs[blog.blogId]?.description) ? translatedBlogs[blog.blogId]?.description : blog.description }}</p>
-        <div class="user">
-          <img [src]="u.imagePath" alt="{{ 'USER_AVATAR' | translate }}" />
-          <div class="user-info">
-            <h5>{{ u.name }}</h5>
-            <small>{{ blog.date }}</small>
-            <div class="like-section">
-              <span class="like-icon"><i class='bx bxs-heart'></i></span>
-              <span class="like-count">55</span> <!-- Replace blog.likes with your actual like count -->
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
+<section class="blogs" style="margin-top: -15px; margin-bottom:0px;" *ngIf="blogs && translatedBlogs">
+	<div class="container-blogs">
+	  <div class="card" *ngFor="let blog of blogs" (click)="showBlogDetail(blog)">
+		<div class="card-header">
+		  <img [src]="'data:image/jpeg;base64,' + blog.image" alt="Blog Image">
+		</div>
+		<div class="card-body" style="margin-top:30px;">
+		  <span class="tag tag-teal">{{ blog.country }}</span>
+		  <h4>{{ (blog.blogId !== undefined && translatedBlogs[blog.blogId]?.title) ? translatedBlogs[blog.blogId]?.title : blog.title }}</h4>
+		  <p>{{ (blog.blogId !== undefined && translatedBlogs[blog.blogId]?.description) ? translatedBlogs[blog.blogId]?.description : blog.description }}</p>
+		  <div class="user">
+			<img [src]="u.imagePath" alt="{{ 'USER_AVATAR' | translate }}" />
+			<div class="user-info">
+			  <h5>{{ u.name }}</h5>
+			  <small>{{ blog.date }}</small>
+			  <div class="like-section">
+				<button (click)="toggleLike(blog, $event)">
+				  <span class="like-icon">
+					<i class='bx bxs-heart' [style.color]="blog.liked ? 'red' : 'grey'"></i>
+				  </span>
+				</button>
+				<span class="like-count">{{ blog.likes }}</span>
+			  </div>
+			</div>
+		  </div>
+		</div>
+	  </div>
+	</div>
+  </section>
+  
+		  
 		
 
 		</div>

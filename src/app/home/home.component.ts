@@ -27,14 +27,14 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
   styleUrl: './home.component.css',
  
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
   dialogConfig = new MatDialogConfig();
   modalDialog: MatDialogRef<EditComponent, any> | undefined;
   title: string = '';
   country: string = '';
   description: string = '';
   base64Image: string = '';
-  image: File | null = null; // Initialize as null
+  image: File | null = null;
   translatedBlogs: { [key: number]: { title: string, description: string } } = {};
   public id: number = 1;
   u: user = {} as user;
@@ -45,7 +45,7 @@ export class HomeComponent {
   formattedDate = this.currentDate.toISOString().split('T')[0];
 
   constructor(
-    private router: Router, 
+    private router: Router,
     public matDialog: MatDialog,
     private service: RestapiService,
     private translate: TranslateService,
@@ -83,7 +83,7 @@ export class HomeComponent {
   }
 
   navigateToBlogs() {
-    this.router.navigate(['/blogs']); 
+    this.router.navigate(['/blogs']);
   }
 
   showBlogDetail(blog: Blog): void {
@@ -135,6 +135,7 @@ export class HomeComponent {
     formData.append('country', this.country);
     formData.append('date', this.formattedDate);
     formData.append('imageFile', this.image);
+    formData.append('likes', '0'); // Initialize likes count
 
     this.service.addBlog(formData, this.id).subscribe(
       (response: any) => {
@@ -178,18 +179,42 @@ export class HomeComponent {
     });
   }
 
-
   getBlogsByUserId(): void {
     this.service.getBlogsByUserId(this.id).subscribe(
       (data) => {
         this.blogs = data;
         this.translateBlogs();
       },
-      
       (error) => {
         console.log('Error:', error);
-      
       }
     );
+  }
+
+  toggleLike(blog: Blog, event: Event): void {
+    event.stopPropagation(); // Prevent event propagation to parent elements
+    if (blog.blogId !== undefined) {
+      if (!blog.liked) {
+        this.service.likeBlog(blog.blogId).subscribe(
+          (updatedBlog: Blog) => {
+            blog.likes = updatedBlog.likes;
+            blog.liked = true;
+          },
+          (error) => {
+            console.error('Error liking blog:', error);
+          }
+        );
+      } else {
+        this.service.unlikeBlog(blog.blogId).subscribe(
+          (updatedBlog: Blog) => {
+            blog.likes = updatedBlog.likes;
+            blog.liked = false;
+          },
+          (error) => {
+            console.error('Error unliking blog:', error);
+          }
+        );
+      }
+    }
   }
 }

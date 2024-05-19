@@ -41,7 +41,7 @@
         
         <!--responsive.css-->
         <link rel="stylesheet" href="/assets/css/responsive.css">
-        
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
       
 
     </head>
@@ -127,9 +127,17 @@
 		  <p *ngIf="blogResponse.blog.blogId">{{ translatedBlogs[blogResponse.blog.blogId]?.description || blogResponse.blog.description }}</p>
 		  <div class="user">
 			<img [src]="blogResponse.imagePath" alt="" />
-			<div class="user-info">
+			<div class="user-info"   style="margin-bottom: 0px;">
 			  <h5>{{ blogResponse.name }}</h5>
 			  <small>{{ blogResponse.blog.date }}</small>
+			  <div class="like-section" style="margin-bottom: 0px;">
+				<button (click)="toggleLike(blogResponse, $event)">
+				  <span class="like-icon">
+					<i class='bx bxs-heart' [style.color]="blogResponse.blog.liked ? 'red' : 'grey'"></i>
+				  </span>
+				</button>
+				<span class="like-count">{{ blogResponse.blog.likes }}</span>
+			  </div>
 			</div>
 		  </div>
 		</div>

@@ -54,7 +54,13 @@ public getBlogsByCountry(country: string): Observable<BlogResponse[]> {
 
 
 
+public likeBlog(id: number): Observable<Blog> {
+  return this.http.post<Blog>(`http://localhost:8222/blogs/${id}/like`, {});
+}
 
+public unlikeBlog(id: number): Observable<Blog> {
+  return this.http.post<Blog>(`http://localhost:8222/blogs/${id}/unlike`, {});
+}
 
 getBlogById(blogid: number): Observable<Blog> {
   return this.http.get<Blog>(`http://localhost:8222/blogs/content/${blogid}`);

@@ -1,13 +1,11 @@
-import { user } from '../models/user';
-
-export interface Blog{
-    blogId?: number;
-    title : string;
-    country : string;
-    description : string;
-    image:FormData
-    date:string;
-    likes: number;  // Ajoutez cette ligne
-    liked?: boolean; // Ajoutez cette ligne (optionnelle)
-
-}
+export interface Blog {
+    blogId: number;  // Ensure blogId is required and cannot be undefined
+    title: string;
+    country: string;
+    description: string;
+    image: FormData;
+    date: string;
+    likes: number;
+    liked?: boolean;
+  }
+  
