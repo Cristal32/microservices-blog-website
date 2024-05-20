@@ -124,24 +124,24 @@ export class BlogsComponent implements OnInit {
   }
 
 
-  toggleLike(blog: Blog, event: Event): void {
+  toggleLike(blogResponse: BlogResponse, event: Event): void {
     event.stopPropagation(); // Prevent event propagation to parent elements
-    if (blog.blogId !== undefined) {
-      if (!blog.liked) {
-        this.service.likeBlog(blog.blogId).subscribe(
+    if (blogResponse.blog.blogId !== undefined) {
+      if (!blogResponse.blog.liked) {
+        this.service.likeBlog(blogResponse.blog.blogId).subscribe(
           (updatedBlog: Blog) => {
-            blog.likes = updatedBlog.likes;
-            blog.liked = true;
+            blogResponse.blog.likes = updatedBlog.likes;
+            blogResponse.blog.liked = true;
           },
           (error) => {
             console.error('Error liking blog:', error);
           }
         );
       } else {
-        this.service.unlikeBlog(blog.blogId).subscribe(
+        this.service.unlikeBlog(blogResponse.blog.blogId).subscribe(
           (updatedBlog: Blog) => {
-            blog.likes = updatedBlog.likes;
-            blog.liked = false;
+            blogResponse.blog.likes = updatedBlog.likes;
+            blogResponse.blog.liked = false;
           },
           (error) => {
             console.error('Error unliking blog:', error);

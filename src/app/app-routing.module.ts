@@ -5,15 +5,23 @@ import { HomeComponent } from './home/home.component';
 import { EditComponent } from './edit/edit.component';
 import { BlogsComponent } from './blogs/blogs.component';
 import { ContentComponent } from './content/content.component';
+import { TravelRecommenderComponent } from './travel-recommender/travel-recommender.component';
 const routes: Routes = [
   { path: '', redirectTo: '/sign-in', pathMatch: 'full' },
   { path: 'sign-in', component: SignInComponent },
   { path: 'content/:blogId', component: ContentComponent },
   { path: 'edit', component: EditComponent },
   { path: 'home', component: HomeComponent },
-  { 
+ { 
     path: 'blogs',
-    component: BlogsComponent,
+     component: BlogsComponent,
+    children: [
+      // Add child routes here if needed
+    ]
+  },
+  { 
+    path: 'recommender',
+     component: TravelRecommenderComponent,
     children: [
       // Add child routes here if needed
     ]

@@ -27,7 +27,8 @@ import { SignInComponent } from './sign-in/sign-in.component';
 import { TestComponent } from './test/test.component';
 
 import { TranslationService } from '../services/translation.service';
-
+import { TravelRecommenderComponent } from './travel-recommender/travel-recommender.component';
+import { ReactiveFormsModule } from '@angular/forms';
 // Function to create TranslateLoader
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -38,6 +39,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     BlogsComponent,
     ContentComponent,
     TestComponent,
+    TravelRecommenderComponent,
    
  
 
@@ -50,6 +52,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatButtonModule,
     MatDialogModule,
     HttpClientModule,
+    ReactiveFormsModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

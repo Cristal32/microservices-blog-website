@@ -91,7 +91,6 @@
 			<section id="first-content">
 			  <div class="wrapper">
 				<div class="image-box">
-				  <!-- Utilisez la syntaxe de liaison de données Angular sans les guillemets -->
 				  <img [src]="'data:image/jpeg;base64,' + blog.image" alt="hhh">
 				</div>
 				<div class="text-box">
@@ -102,7 +101,40 @@
 				</div>
 			  </div>
 			</section>
-		  </div>
+		  
+			<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+			<div class="container">
+			  <div class="be-comment-block">
+				<h1 class="comments-title">Comments ({{ comments.length }})</h1>
+				<div *ngFor="let comment of comments" class="be-comment">
+				  <div class="be-img-comment">
+					<img [src]="getUserImage()" alt="" class="be-ava-comment">
+				  </div>
+				  <div class="be-comment-content">
+					<span class="be-comment-name">{{ comment.userName }}</span>
+					<span class="be-comment-time">
+					  <i class="fa fa-clock-o"></i>
+					  {{ comment.date | date:'medium' }}
+					</span>
+					<p class="be-comment-text">{{ comment.text }}</p>
+				  </div>
+				</div>
+				<form (ngSubmit)="submitComment()" class="form-block">
+				  <div class="row">
+					<div class="col-xs-12">
+					  <div class="form-group">
+						<textarea [(ngModel)]="newComment.text" name="commentText" class="form-input" required="" placeholder="Your comment" style="color:black;"></textarea>
+					  </div>
+					</div>
+					<div class="col-xs-12">
+					  <button type="submit" class="btn btn-primary pull-right">Submit</button>
+					</div>
+				  </div>
+				</form>
+			  </div>
+			</div>
+			
+
 		  
     
 	
@@ -160,6 +192,3 @@
 
 
 
-    </body>
-	
-</html>

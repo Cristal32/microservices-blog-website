@@ -1,11 +1,13 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable, NgZone } from '@angular/core';
-import { Observable } from 'rxjs';
+
 import { user } from '../models/user';
 import {Blog} from '../models/blog';
+import { Comment } from '../models/Comment';
 import {BlogResponse} from '../models/blogResponse';
+import { Observable, throwError } from 'rxjs';
 
-
+import { catchError } from 'rxjs/operators';
 
 
 
@@ -65,5 +67,26 @@ public unlikeBlog(id: number): Observable<Blog> {
 getBlogById(blogid: number): Observable<Blog> {
   return this.http.get<Blog>(`http://localhost:8222/blogs/content/${blogid}`);
 }
+
+
+
+
+public getCommentsByBlogId(blogId: number): Observable<Comment[]> {
+  return this.http.get<Comment[]>(`http://localhost:8222/blogs/comments/${blogId}`).pipe(
+    catchError(this.handleError)
+  );
+}
+
+createComment(blogId: number, userId: number, comment: Comment): Observable<Comment> {
+  return this.http.post<Comment>(`http://localhost:8222/blogs/comments/${blogId}/${userId}`, comment).pipe(
+    catchError(this.handleError)
+  );
+}
+
+private handleError(error: any): Observable<never> {
+  console.error('An error occurred:', error);
+  return throwError('Something bad happened; please try again later.');
+}
+
 
 }
