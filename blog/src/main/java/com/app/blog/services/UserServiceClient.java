@@ -13,7 +13,7 @@ public class UserServiceClient {
     private RestTemplate restTemplate;
 
     public user getUserById(Long userId) {
-        ResponseEntity<user> response = restTemplate.getForEntity("http://localhost:8222/users/getuser/{userId}", user.class, userId);
+        ResponseEntity<user> response = restTemplate.getForEntity("http://gateway:8222/users/getuser/{userId}", user.class, userId);
         if (response.getStatusCode().is2xxSuccessful()) {
             return response.getBody();
         } else {

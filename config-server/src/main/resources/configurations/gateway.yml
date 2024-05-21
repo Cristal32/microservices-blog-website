@@ -1,8 +1,7 @@
+
 eureka:
   client:
     register-with-eureka: false
-    service-url:
-      defaultZone: http://discovery:8761/eureka/
 server:
   port: 8222
 spring:
@@ -24,13 +23,15 @@ spring:
           enabled: true
       routes:
         - id: user
-          uri: http://user:9098
+          uri: http://localhost:9098
           predicates:
             - Path=/users/**
+
         - id: blog
-          uri: http://blog:9097
+          uri: http://localhost:9097
           predicates:
             - Path=/blogs/**
+
 management:
   tracing:
     sampling:

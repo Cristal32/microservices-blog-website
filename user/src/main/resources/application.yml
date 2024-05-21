@@ -1,8 +1,28 @@
-
+eureka:
+  instance:
+    hostname: user
+  client:
+    service-url:
+      defaultZone: http://discovery:8761/eureka/
 server:
   port: 9098
 spring:
   application:
     name: user
-  config:
-    import: optional:configserver:http://localhost:8888
+
+
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://postgres:5432/users # Correct service name and database
+    username: postgres
+    password: 2001195
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+
+management:
+  tracing:
+    sampling:
+      probability: 1.0
