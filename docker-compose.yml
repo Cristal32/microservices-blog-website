@@ -15,19 +15,9 @@ services:
     ports:
       - "9098:9098"
     environment:
-<<<<<<< HEAD
       - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/users
       - SPRING_DATASOURCE_USERNAME=postgres
       - SPRING_DATASOURCE_PASSWORD=2001195
-=======
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: Benzo7004
-      PGDATA: /data/postgres
-    volumes:
-      - postgres:/data/postgres
-    ports:
-      - "5433:5432"
->>>>>>> c512b5a509d06e0dfa528fdaff84bcbe52017989
     networks:
       - mynetwork
 
