@@ -1,0 +1,64 @@
+version: '3'
+
+services:
+  discovery:
+    image: lam2001/website1:discovery-image-v1
+    container_name: discovery
+    ports:
+      - "8761:8761"
+    networks:
+      - mynetwork
+
+  user:
+    image: lam2001/website1:user-image-v1
+    container_name: user
+    ports:
+      - "9098:9098"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/users
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=2001195
+    networks:
+      - mynetwork
+
+  blog:
+    image: lam2001/website1:blog-image-v1
+    container_name: blog
+    ports:
+      - "9097:9097"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/blogs
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=2001195
+    networks:
+      - mynetwork
+
+  gateway:
+    image: lam2001/website1:gateway-image-v1
+    container_name: gateway
+    ports:
+      - "8222:8222"
+    networks:
+      - mynetwork
+
+  postgres:
+    image: postgres:13
+    container_name: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=2001195
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./init-db:/docker-entrypoint-initdb.d
+
+    networks:
+      - mynetwork
+
+networks:
+  mynetwork:
+    driver: bridge
+
+volumes:
+  pgdata:
