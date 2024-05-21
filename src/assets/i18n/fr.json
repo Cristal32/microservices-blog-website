@@ -73,7 +73,41 @@
     "FORM_GENDER_MALE": "Homme",
     "FORM_GENDER_FEMALE": "Femme",
     "FORM_SUBMIT": "S'inscrire",
-    "FORM_CLOSE": "Fermer"
+    "FORM_CLOSE": "Fermer",
+
+
+
+
+
+
+
+
+    
+        "BUDGET": "Budget",
+        "LOW": "Bas (500 $ - 1000 $)",
+        "MEDIUM": "Moyen (1000 $ - 3000 $)",
+        "HIGH": "Élevé (3000 $+)",
+        "PREFERRED_CLIMATE": "Climat préféré",
+        "WARM": "Chaud",
+        "COLD": "Froid",
+        "TEMPERATE": "Tempéré",
+        "ACTIVITIES": "Activités",
+        "BEACH": "Plage",
+        "HIKING": "Randonnée",
+        "CITY_TOURS": "Visites de la ville",
+        "CULTURE": "Culture",
+        "ADVENTURE": "Aventure",
+        "TRAVEL_DURATION": "Durée du voyage",
+        "WEEKEND": "Week-end",
+        "ONE_WEEK": "1 Semaine",
+        "TWO_WEEKS": "2 Semaines",
+        "MORE_THAN_TWO_WEEKS": "Plus de 2 semaines",
+        "GET_RECOMMENDATIONS": "Obtenir des recommandations",
+        "NO_MATCHES": "Aucune destination ne correspond à vos préférences. Veuillez essayer d'autres options.",
+        "HIGHLIGHTS": "Points forts",
+        "BEST_TIME_TO_VISIT": "Meilleure période pour visiter",
+        "KEY_ATTRACTIONS": "Attractions clés"
+            
 }
   
   

@@ -402,3 +402,56 @@ color: #888785;
   font-size: 14px;
   color: #555;
 }
+
+
+
+
+.unique-travel-recommendation-section {
+  background-color: #f5e6e8; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60vh;
+  margin-bottom:100px;
+  background: linear-gradient(135deg, #f3c5d5, #d7bbf8, #f3eae5); /* Gradient from light pink, purple, to light beige */
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Elevated shadow */
+  border-radius: 15px; /* Smooth corners */
+  padding: 50px;
+}
+
+.unique-container {
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Elevated shadow */
+  max-width: 600px;
+  margin: auto;
+}
+
+.unique-heading {
+  color: #9b59b6; /* Purple color for headings */
+  font-size: 2.5em;
+  margin-bottom: 20px;
+}
+
+.unique-description {
+  color: #555555;
+  font-size: 1.2em;
+  margin-bottom: 30px;
+}
+
+.unique-btn {
+  display: inline-block;
+  background-color: #e91e63; /* Bright pink button */
+  color: #ffffff;
+  padding: 15px 30px;
+  text-decoration: none;
+  font-size: 1em;
+  border-radius: 50px; /* Rounded button */
+  transition: background-color 0.3s ease;
+}
+
+.unique-btn:hover {
+  background-color: #d81b60; /* Slightly darker pink on hover */
+}

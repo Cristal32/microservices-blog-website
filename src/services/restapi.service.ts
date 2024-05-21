@@ -66,15 +66,13 @@ getBlogById(blogid: number): Observable<Blog> {
 
 
 public getCommentsByBlogId(blogId: number): Observable<Comment[]> {
-  return this.http.get<Comment[]>(`${this.apiGatewayUrl}/blogs/comments/${blogId}`).pipe(
+  return this.http.get<Comment[]>(`http://localhost:9099/comments/getComments/${blogId}`).pipe(
     catchError(this.handleError)
   );
 }
 
-createComment(blogId: number, userId: number, comment: Comment): Observable<Comment> {
-  return this.http.post<Comment>(`${this.apiGatewayUrl}/blogs/comments/${blogId}/${userId}`, comment).pipe(
-    catchError(this.handleError)
-  );
+addComment(comment: Comment): Observable<Comment> {
+  return this.http.post<Comment>('http://localhost:9099/comments/addComment', comment);
 }
 
 private handleError(error: any): Observable<never> {

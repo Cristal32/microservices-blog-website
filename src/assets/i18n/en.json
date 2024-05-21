@@ -72,6 +72,44 @@
     "FORM_GENDER_MALE": "Male",
     "FORM_GENDER_FEMALE": "Female",
     "FORM_SUBMIT": "Register",
-    "FORM_CLOSE": "Close"
+    "FORM_CLOSE": "Close",
+
+
+
+
+
+
+
+
+
+
+
+
+    
+      "BUDGET": "Budget",
+      "LOW": "Low ($500 - $1000)",
+      "MEDIUM": "Medium ($1000 - $3000)",
+      "HIGH": "High ($3000+)",
+      "PREFERRED_CLIMATE": "Preferred Climate",
+      "WARM": "Warm",
+      "COLD": "Cold",
+      "TEMPERATE": "Temperate",
+      "ACTIVITIES": "Activities",
+      "BEACH": "Beach",
+      "HIKING": "Hiking",
+      "CITY_TOURS": "City Tours",
+      "CULTURE": "Culture",
+      "ADVENTURE": "Adventure",
+      "TRAVEL_DURATION": "Travel Duration",
+      "WEEKEND": "Weekend",
+      "ONE_WEEK": "1 Week",
+      "TWO_WEEKS": "2 Weeks",
+      "MORE_THAN_TWO_WEEKS": "More than 2 Weeks",
+      "GET_RECOMMENDATIONS": "Get Recommendations",
+      "NO_MATCHES": "No destinations match your preferences. Please try different options.",
+      "HIGHLIGHTS": "Highlights",
+      "BEST_TIME_TO_VISIT": "Best Time to Visit",
+      "KEY_ATTRACTIONS": "Key Attractions"
+      
   }
   

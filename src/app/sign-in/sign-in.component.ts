@@ -35,6 +35,8 @@ getUser(){
       this.u = response;
       console.log(this.u);
       sessionStorage.setItem('uId', this.u.userId.toString());
+      sessionStorage.setItem('uName', this.u.name.toString());
+      sessionStorage.setItem('userGender', this.u.gender.toString());
       this.router.navigate(['/home']);
     },
     (error: HttpErrorResponse) => {
@@ -50,6 +52,9 @@ addUser(): void {
       // Faites autre chose avec la réponse, comme accéder au corps de la réponse, aux en-têtes, etc.
       alert('Profil mis à jour avec succès');
       sessionStorage.setItem('uId', response.userId.toString());
+      sessionStorage.setItem('uName', response.name.toString());
+      sessionStorage.setItem('userGender', response.gender.toString());
+      console.log(response.name);
       this.router.navigate(['/home']);
     },
     error => {
@@ -62,6 +67,3 @@ addUser(): void {
 
 
 }
-
-
-

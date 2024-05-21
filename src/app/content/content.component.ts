@@ -14,14 +14,22 @@ export class ContentComponent implements OnInit {
   blog: Blog = {} as Blog;
   id: number = 0;
   blogid: number = 0;
+  Name :String =''
+  userGender :string =''
   comments: Comment[] = [];
-  newComment: Comment = { text: '' } as Comment;
+  newComment: Comment = {
+    blogId: 0,
+    userId: 0,
+    userName: '',
+    content: '',
+    gender:'',
+    date: new Date().toISOString()
+  };
 
   translatedTitle: string = '';
   translatedCountry: string = '';
   translatedDescription: string = '';
 
-  userGender: number = 0; // Add userGender
 
   constructor(
     private route: ActivatedRoute,
@@ -32,11 +40,15 @@ export class ContentComponent implements OnInit {
 
   ngOnInit() {
     this.id = Number(sessionStorage.getItem('uId'));
-    this.userGender = Number(sessionStorage.getItem('userGender')); // Retrieve user gender
+    this.userGender =String(sessionStorage.getItem('userGender'));
+    this.Name=String(sessionStorage.getItem('uName'))
     this.blogid = Number(this.route.snapshot.paramMap.get('blogId'));
-
-    this.getBlogById();
+    this.newComment.userName = this.Name;
+    this.newComment.blogId = this.blogid;
+    this.newComment.userId = this.id;
+    this.newComment.gender =this.userGender;
     this.getComments();
+    this.getBlogById();
   }
 
   getBlogById(): void {
@@ -44,9 +56,10 @@ export class ContentComponent implements OnInit {
       (data) => {
         this.blog = data;
         this.translateFields();
+       
       },
       (error) => {
-        console.log('Error:', error);
+       
       }
     );
   }
@@ -55,31 +68,38 @@ export class ContentComponent implements OnInit {
     this.service.getCommentsByBlogId(this.blogid).subscribe(
       (data: Comment[]) => {
         this.comments = data;
+      
       },
       (error) => {
         console.error('Error:', error);
+
         alert('Failed to load comments. Please try again later.');
       }
     );
   }
 
   submitComment(): void {
-    if (!this.newComment.text) return;
-
-    this.service.createComment(this.blogid, this.id, this.newComment).subscribe(
-      (data: Comment) => {
-        this.comments.push(data);
-        this.newComment = { text: '' } as Comment;
-      },
-      (error) => {
-        console.error('Error:', error);
-        alert('Failed to submit comment. Please try again later.');
-      }
-    );
+    console.log('Submit button clicked');  // Debugging statement
+    console.log('Comment content:', this.newComment.content);  // Debugging statement
+    if (this.newComment.content) {
+      this.newComment.date = new Date().toISOString();  // Set current date as ISO string before submission
+      this.service.addComment(this.newComment).subscribe({
+        next: (comment) => {
+          console.log('username:', this.newComment.userName);
+          this.newComment.content = '';  // Clear the text area after submission
+          this.newComment.date = new Date().toISOString();  // Reset date if needed after successful submission
+          window.location.reload();
+        },
+        error: (error) => console.error('There was an error!', error)
+      });
+    } else {
+      console.log('Comment content is empty');  // Debugging statement
+    }
   }
 
+
   translateFields(): void {
-    const userLanguage = navigator.language.split('-')[0]; // Get browser language
+    const userLanguage = navigator.language.split('-')[0];  // Get browser language
 
     this.translationService.translate(this.blog.title, userLanguage).subscribe({
       next: (translatedText: string) => this.translatedTitle = translatedText,
@@ -97,9 +117,7 @@ export class ContentComponent implements OnInit {
     });
   }
 
-  getUserImage(): string {
-    return this.userGender === 1
-      ? 'https://bootdey.com/img/Content/avatar/avatar1.png' // Female avatar
-      : 'https://bootdey.com/img/Content/avatar/avatar2.png'; // Male avatar
+  getUserImage(gender: string): String {
+    return Number(gender) === 1 ? '/assets/images/gar.png' : '/assets/images/fille.jpg';
   }
 }
