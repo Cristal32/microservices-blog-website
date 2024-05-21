@@ -7,5 +7,7 @@ export interface Blog {
     date: string;
     likes: number;
     liked?: boolean;
+    latitude: number;
+    longitude: number;
   }
   

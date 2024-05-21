@@ -1,22 +1,14 @@
 import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router'; // Import Router
 import { EditComponent } from '../edit/edit.component';
-
-
-
-
-
 import {Blog} from '../../models/blog';
-
 import { CommonModule } from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-
 import { user } from '../../models/user';
 import { RestapiService } from '../../services/restapi.service';
 import { FormsModule } from '@angular/forms';
 import { TranslationService } from '../../services/translation.service';
-
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
@@ -40,6 +32,8 @@ export class HomeComponent implements OnInit {
   u: user = {} as user;
   firstname: string = '';
   imagePath: string = '';
+  latitude: number = 0;
+  longitude: number = 0;
   blogs: Blog[] = [];
   currentDate = new Date();
   formattedDate = this.currentDate.toISOString().split('T')[0];
@@ -136,6 +130,8 @@ export class HomeComponent implements OnInit {
     formData.append('date', this.formattedDate);
     formData.append('imageFile', this.image);
     formData.append('likes', '0'); // Initialize likes count
+    (formData as any).append('latitude', this.latitude); 
+    (formData as any).append('longitude', this.longitude); 
 
     this.service.addBlog(formData, this.id).subscribe(
       (response: any) => {

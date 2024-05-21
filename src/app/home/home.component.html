@@ -449,6 +449,14 @@
 							<label for="imageInput">{{ 'ADD_BLOG_CHOOSE_IMAGE' | translate }}</label><br>
                             <input type="file" id="imageInput" name="image" (change)="onImageSelected($event)" />
                         </li>
+						<li>
+							<label for="latitude">Latitude</label><br>
+                            <input type="number" name="latitude" class="field-style" [(ngModel)]="latitude" />
+                        </li>
+						<li>
+                            <label for="longitude">Longitude</label><br>
+                            <input type="number" name="longitude" class="field-style" [(ngModel)]="longitude" />
+                        </li>
                         <li>
                             <input type="submit" value="{{ 'ADD_BLOG_BUTTON' | translate }}" />
                         </li>
