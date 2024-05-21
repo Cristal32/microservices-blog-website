@@ -424,6 +424,12 @@ export class TravelRecommenderComponent {
     });
   }
 
+
+  scrollTo(element: any): void {
+    (document.getElementById(element) as HTMLElement).scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
+  }
+
+ 
   getRecommendations() {
     const userPreferences = this.travelForm.value;
     console.log('User Preferences:', userPreferences);
@@ -441,6 +447,8 @@ export class TravelRecommenderComponent {
     this.noMatches = this.recommendations.length === 0;
   }
 
+
+  
   getImageUrl(destination: string): string {
     const imageUrls: { [key: string]: string } = {
       "Bali, Indonesia": "https://via.placeholder.com/300x200?text=Bali",
@@ -485,5 +493,5 @@ export class TravelRecommenderComponent {
     };
 
     return imageUrls[destination] || "https://via.placeholder.com/300x200?text=Destination";
-  }
+  }
 }
