@@ -1,5 +1,3 @@
-
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -12,7 +10,6 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -58,14 +55,16 @@ public class BlogTests {
         MockMultipartFile file = new MockMultipartFile("imageFile", "test.txt", "text/plain", "some image content".getBytes());
 
         mockMvc.perform(multipart("/blogs/addBlog/1")
-                        .file(file)
-                        .param("title", "Test Title")
-                        .param("description", "Test Description")
-                        .param("country", "Test Country")
-                        .param("date", "2024-05-07"))
-                .andExpect(status().isOk());
+                .file(file)
+                .param("title", "Test Title")
+                .param("description", "Test Description")
+                .param("country", "Test Country")
+                .param("date", "2024-05-07")
+                .param("latitude", "34.048927")
+                .param("longitude", "-111.093735"))
+        .andExpect(status().isOk());
 
-        verify(blogService).addBlog("Test Title", "Test Country", "Test Description", file.getBytes(), "2024-05-07", 1L);
+        verify(blogService).addBlog(eq("Test Title"), eq("Test Country"), eq("Test Description"), eq(file.getBytes()), eq("2024-05-07"), eq(1L), eq(34.048927), eq(-111.093735));
     }
 
 

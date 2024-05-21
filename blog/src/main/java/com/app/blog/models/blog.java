@@ -2,9 +2,7 @@ package com.app.blog.models;
 
 import jakarta.persistence.*;
 
-import org.hibernate.annotations.Type;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.multipart.MultipartFile;
 
 @CrossOrigin
 @Entity
@@ -16,38 +14,28 @@ public class blog{
     @GeneratedValue(
             strategy = GenerationType.AUTO)
     private Long blogId;
-
     private String title;
-
-
     private String description;
     private String country;
-
     private byte[] image;
-
-
     private Long userId;
-
     private String date;
+    private double latitude;
+    private double longitude;
 
 
-    public blog() {
-    }
+    public blog() {}
 
-
-
-
-
-    public blog(String title, String country, String description, byte[] image,String date,Long userId) {
+    public blog(String title, String country, String description, byte[] image, String date, Long userId, double latitude, double longitude) {
         this.title = title;
         this.country = country;
         this.description = description;
         this.image = image;
         this.date=date;
         this.userId = userId;
+        this.latitude = latitude;
+        this.longitude = longitude;
     }
-
-
 
     public Long getBlogId() {
         return blogId;
@@ -110,6 +98,22 @@ public class blog{
     }
     public void setDate(String date) {
         this.date = date;
+    }
+    
+    public double getLatitude() {
+    	return latitude;
+    }
+    
+    public void setLatitude(double latitude) {
+    	this.latitude = latitude;
+    }
+    
+    public double getLongitude() {
+    	return longitude;
+    }
+    
+    public void setLongitude(double longitude) {
+    	this.longitude = longitude;
     }
 
 }
