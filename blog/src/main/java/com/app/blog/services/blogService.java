@@ -13,50 +13,38 @@ import java.util.List;
 
 @Service
 public class blogService {
-
     private blogRepository blogrepository;
     private UserServiceClient userServiceClient;
 
-@Autowired
+    @Autowired
     public blogService(blogRepository blogrepository, UserServiceClient userServiceClient) {
         this.blogrepository = blogrepository;
         this.userServiceClient = userServiceClient;
     }
-
-
-//ajouter un blog
-    public void addBlog(
-            String title,String country,String description,byte[] image,String date ,Long userId
-
-    ) {
-
+    
+	//ajouter un blog
+    public void addBlog( String title, String country, String description, byte[] image, String date, Long userId, double latitude, double longitude) {
         try {
             // Fetch the user by user id (assuming you have a UserRepository)
-
-            blog b =new blog(title,country,description,image,date,userId);
+            blog b = new blog(title, country, description, image,date, userId, latitude, longitude);
             blogrepository.save(b);
         } catch (Exception e) {
             // Handle any other exceptions that might occur
             e.printStackTrace();
-
         }
     }
+    
     //get Blog by id
     public blog getBlogById(Long id) {
-
-
         return blogrepository.findById(id).orElse(null);
-
-
     }
 
-//liste de blog par utilisateur
+    //liste de blog par utilisateur
     public List<blog> getBlogsByUserId(Long userId) {
         List<blog> listOfBlogd=blogrepository.findByUserId(userId);
-
-
         return listOfBlogd;
     }
+    
     //par country
     public List<BlogResponse> getBlogsByCountry(String country) {
         List<blog> blogs = blogrepository.findByCountry(country);
@@ -73,6 +61,7 @@ public class blogService {
         }
         return blogResponses;
     }
+    
     //all
     public List<BlogResponse> getAllBlogs( ) {
         List<blog> blogs = blogrepository.findAll();
@@ -89,7 +78,6 @@ public class blogService {
         }
         return blogResponses;
     }
-
-
+    
 }
 

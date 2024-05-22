@@ -27,40 +27,43 @@ private blogService blogservice;
 
     @PostMapping("/addBlog/{id}")
     public void addBlog(
+    		@PathVariable("id") Long userId,
             @RequestParam("title") String title,
             @RequestParam("description") String description,
             @RequestParam("country") String country,
             @RequestParam("imageFile") MultipartFile imageFile,
             @RequestParam("date") String date,
-            @PathVariable("id") Long userId
+            @RequestParam("latitude") double latitude,
+            @RequestParam("longitude") double longitude
     ) throws IOException {
         // Traitement des données FormData ici
         // Vous pouvez accéder aux champs title et description directement comme des paramètres de méthode
         // L'image est accessible via le paramètre imageFile de type MultipartFile
-        blogservice.addBlog(title,country, description, imageFile.getBytes(),date, userId);
+        blogservice.addBlog(title,country, description, imageFile.getBytes(),date, userId, latitude, longitude);
     }
     //get blogs
     @GetMapping("/user/{userId}")
     public List<blog> getBlogsByUserId(@PathVariable Long userId) {
         List<blog> blogs = blogservice.getBlogsByUserId(userId);
-
-
         return blogs;
     }
-// gets blog by country
+    
+    // gets blog by country
     @GetMapping("/country/{country}")
     public List<BlogResponse> getBlogsByCountry(@PathVariable String country) {
         return blogservice.getBlogsByCountry(country);
     }
-//all
+    
+    //all
     @GetMapping("/all")
     public List<BlogResponse> getAllBlogs() {
         return blogservice.getAllBlogs();
     }
-//blog by id
+    
+    //blog by id
     @GetMapping("/content/{blogid}")
     public blog  getBlogById(@PathVariable Long blogid) {
         return  blogservice.getBlogById(blogid);
-
     }
+    
 }

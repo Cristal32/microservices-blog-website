@@ -3,11 +3,10 @@ package com.app.blog.models;
 public class user {
     private Long userId;
     private String name;
-
     private String email;
     private String adresse;
     private String phone;
-private String password;
+    private String password;
     private String gender;
 
     public user() {

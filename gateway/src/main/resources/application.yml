@@ -35,6 +35,8 @@ spring:
           uri: http://comments:9099
           predicates:
             - Path=/comments/**
+
+
 management:
   tracing:
     sampling:
