@@ -6,11 +6,13 @@ import { EditComponent } from './edit/edit.component';
 import { BlogsComponent } from './blogs/blogs.component';
 import { ContentComponent } from './content/content.component';
 import { TravelRecommenderComponent } from './travel-recommender/travel-recommender.component';
+import { MapComponent } from './map/map.component';
 const routes: Routes = [
   { path: '', redirectTo: '/sign-in', pathMatch: 'full' },
   { path: 'sign-in', component: SignInComponent },
   { path: 'content/:blogId', component: ContentComponent },
   { path: 'edit', component: EditComponent },
+  {path: 'maps', component: MapComponent},
   { path: 'home', component: HomeComponent },
  { 
     path: 'blogs',

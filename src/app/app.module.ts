@@ -18,6 +18,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { RestapiService } from '../services/restapi.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { GoogleMapsModule } from "@angular/google-maps";
 
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
@@ -29,6 +30,7 @@ import { TestComponent } from './test/test.component';
 import { TranslationService } from '../services/translation.service';
 import { TravelRecommenderComponent } from './travel-recommender/travel-recommender.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MapComponent } from './map/map.component';
 // Function to create TranslateLoader
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -40,9 +42,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     ContentComponent,
     TestComponent,
     TravelRecommenderComponent,
-   
- 
-
+    MapComponent,
   ],
   imports: [
     BrowserModule,
@@ -59,7 +59,8 @@ export function HttpLoaderFactory(http: HttpClient) {
         useFactory: HttpLoaderFactory,
         deps: [HttpClient]
       }
-    })
+    }),
+    GoogleMapsModule
   ],
   providers: [
   RestapiService,
