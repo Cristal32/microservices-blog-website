@@ -11,8 +11,8 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { HttpClient } from '@angular/common/http'; // Ensure HttpClient is imported
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
-import { BlogsComponent } from './blogs/blogs.component';
-import { ContentComponent } from './content/content.component';
+import { BlogsComponent } from './components/blogs/blogs.component';
+import { ContentComponent } from './components/content/content.component';
 
 import { HttpClientModule } from '@angular/common/http';
 import { RestapiService } from '../services/restapi.service';
@@ -23,14 +23,14 @@ import { GoogleMapsModule } from "@angular/google-maps";
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
-import { HomeComponent } from './home/home.component';
-import { SignInComponent } from './sign-in/sign-in.component';
+import { HomeComponent } from './components/home/home.component';
+import { SignInComponent } from './components/sign-in/sign-in.component';
 import { TestComponent } from './test/test.component';
 
 import { TranslationService } from '../services/translation.service';
 import { TravelRecommenderComponent } from './travel-recommender/travel-recommender.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MapComponent } from './map/map.component';
+import { MapComponent } from './components/map/map.component';
 // Function to create TranslateLoader
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');

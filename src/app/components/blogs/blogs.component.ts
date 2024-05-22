@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { BlogResponse } from '../../models/blogResponse';
-import { RestapiService } from '../../services/restapi.service';
+import { BlogResponse } from '../../../models/blogResponse';
+import { RestapiService } from '../../../services/restapi.service';
 import { TranslateService } from '@ngx-translate/core';
-import { TranslationService } from '../../services/translation.service';
-import { Blog } from '../../models/blog';
+import { TranslationService } from '../../../services/translation.service';
+import { Blog } from '../../../models/blog';
 @Component({
   selector: 'app-blogs',
   templateUrl: './blogs.component.html',
