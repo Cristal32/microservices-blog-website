@@ -1,8 +1,11 @@
 package com.app.user.controllers;
 
+import com.app.user.models.CommentAddedEvent;
 import com.app.user.models.user;
 import com.app.user.services.userService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.NoSuchAlgorithmException;
@@ -12,12 +15,21 @@ import java.util.Map;
 
 @RequestMapping(path ="/users")
 public class userController {
+
     private userService userservice;
     @Autowired
     public userController(userService userservice) {
         this.userservice = userservice;
 
     }
+
+
+
+
+
+
+
+
 
     @PostMapping("/add")
 

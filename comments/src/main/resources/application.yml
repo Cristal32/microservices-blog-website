@@ -1,20 +1,20 @@
 eureka:
   instance:
-    hostname: user
+    hostname: comments
   client:
     service-url:
       defaultZone: http://discovery:8761/eureka/
 server:
-  port: 9098
+  port: 9099
 spring:
   application:
-    name: user
+    name: comments
 
 
 
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://postgres:5432/users # Correct service name and database
+    url: jdbc:postgresql://postgres:5432/comments # Correct service name and database
     username: postgres
     password: 2001195
   jpa:

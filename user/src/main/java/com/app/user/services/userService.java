@@ -3,22 +3,30 @@ package com.app.user.services;
 
 
 import com.app.user.Hash1;
+import com.app.user.models.CommentAddedEvent;
 import com.app.user.models.user;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import com.app.user.repositories.userRepository;
 
 import java.security.NoSuchAlgorithmException;
-
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.kafka.core.KafkaTemplate;
+import org.springframework.stereotype.Service;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Service
 public class userService {
     private userRepository userrepository ;
      private Hash1 hash=new Hash1();
-@Autowired
+
+
+    @Autowired
     public userService(userRepository userrepository) {
         this.userrepository = userrepository;
+
     }
 
 

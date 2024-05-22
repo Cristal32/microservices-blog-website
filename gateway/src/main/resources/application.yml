@@ -31,7 +31,14 @@ spring:
           uri: http://blog:9097
           predicates:
             - Path=/blogs/**
+        - id: comments
+          uri: http://comments:9099
+          predicates:
+            - Path=/comments/**
 management:
   tracing:
     sampling:
-      probability: 1.0
+      probability: 1.0 # only for testing purpose, switch back to 0.1 for production code
+  zipkin:
+    tracing:
+      endpoint: http://zipkin:9411/api/v2/spans

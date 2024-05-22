@@ -1,6 +1,30 @@
 version: '3'
 
 services:
+  zookeeper:
+    image: confluentinc/cp-zookeeper:latest
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    ports:
+      - "2181:2181"
+    networks:
+      - mynetwork
+
+  kafka:
+    image: confluentinc/cp-kafka:latest
+    depends_on:
+      - zookeeper
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+    ports:
+      - "9092:9092"
+    networks:
+      - mynetwork
+
   discovery:
     image: lam2001/website1:discovery-image-v1
     container_name: discovery
@@ -10,7 +34,7 @@ services:
       - mynetwork
 
   user:
-    image: lam2001/website1:user-image-v1
+    image: user-image
     container_name: user
     ports:
       - "9098:9098"
@@ -18,11 +42,14 @@ services:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/users
       - SPRING_DATASOURCE_USERNAME=postgres
       - SPRING_DATASOURCE_PASSWORD=2001195
+      - SPRING_ZIPKIN_BASE_URL=http://zipkin:9411
+      - SPRING_SLEUTH_SAMPLER_PROBABILITY=1.0
+      - KAFKA_BOOTSTRAP_SERVERS=kafka:9092
     networks:
       - mynetwork
 
   blog:
-    image: lam2001/website1:blog-image-v1
+    image: blog-image
     container_name: blog
     ports:
       - "9097:9097"
@@ -30,14 +57,45 @@ services:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/blogs
       - SPRING_DATASOURCE_USERNAME=postgres
       - SPRING_DATASOURCE_PASSWORD=2001195
+      - SPRING_ZIPKIN_BASE_URL=http://zipkin:9411
+      - SPRING_SLEUTH_SAMPLER_PROBABILITY=1.0
+      - KAFKA_BOOTSTRAP_SERVERS=kafka:9092
     networks:
       - mynetwork
+  comments:
+    image: comments-image
+    container_name: comments
+    ports:
+      - "9099:9099"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/comments
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=2001195
+      - SPRING_ZIPKIN_BASE_URL=http://zipkin:9411
+      - SPRING_SLEUTH_SAMPLER_PROBABILITY=1.0
+      - KAFKA_BOOTSTRAP_SERVERS=kafka:9092
+    networks:
+      - mynetwork
+
 
   gateway:
     image: lam2001/website1:gateway-image-v1
     container_name: gateway
     ports:
       - "8222:8222"
+    environment:
+      - SPRING_ZIPKIN_BASE_URL=http://zipkin:9411
+      - SPRING_SLEUTH_SAMPLER_PROBABILITY=1.0
+    networks:
+      - mynetwork
+
+  zipkin:
+    image: openzipkin/zipkin:2.23.2
+    container_name: zipkin
+    ports:
+      - "9411:9411"
+    environment:
+      MANAGEMENT.ZIPKIN.TRACING.ENDPOINT: http://zipkin:9411/api/v2/spans
     networks:
       - mynetwork
 
@@ -52,7 +110,6 @@ services:
     volumes:
       - pgdata:/var/lib/postgresql/data
       - ./init-db:/docker-entrypoint-initdb.d
-
     networks:
       - mynetwork
 

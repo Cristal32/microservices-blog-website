@@ -10,6 +10,8 @@
         <option value="$PROJECT_DIR$/user/pom.xml" />
         <option value="$PROJECT_DIR$/blog/pom.xml" />
         <option value="$PROJECT_DIR$/login/pom.xml" />
+        <option value="$PROJECT_DIR$/comment/pom.xml" />
+        <option value="$PROJECT_DIR$/comments/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
