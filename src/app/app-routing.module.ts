@@ -13,6 +13,7 @@ const routes: Routes = [
   { path: 'content/:blogId', component: ContentComponent },
   { path: 'edit', component: EditComponent },
   { path: 'maps', component: MapComponent }, // Route without parameters
+  { path: 'map-selection', component: MapComponent },
   { path: 'maps/:lat/:lng', component: MapComponent }, 
   { path: 'home', component: HomeComponent },
  { 

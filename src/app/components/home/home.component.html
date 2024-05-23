@@ -469,6 +469,9 @@
                             <label for="longitude">Longitude</label><br>
                             <input type="number" name="longitude" class="field-style" [(ngModel)]="longitude" />
                         </li>
+						<li>
+							<button type="button" (click)="navigateToMap()">{{ 'SELECT_ON_MAP' | translate }}</button>
+						  </li>
                         <li>
                             <input type="submit" value="{{ 'ADD_BLOG_BUTTON' | translate }}" />
                         </li>
