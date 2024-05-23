@@ -40,13 +40,9 @@
   <link rel="stylesheet" href="/assets/css/responsive.css">
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
-
-
-
 </head>
-<body>
+<div id="body">
 
-<!-- top-area Start -->
 <!-- top-area Start -->
 <header class="top-area">
   <div class="header-area">
@@ -84,110 +80,88 @@
 
 </header><!-- /.top-area-->
 <!-- top-area End -->
-<section class="travel">
 
-<form [formGroup]="travelForm" (ngSubmit)="getRecommendations()" class="travel-form">
-  <label for="budget">{{ 'BUDGET' | translate }}:</label>
-  <select id="budget" formControlName="budget" required>
-    <option value="low">{{ 'LOW' | translate }}</option>
-    <option value="medium">{{ 'MEDIUM' | translate }}</option>
-    <option value="high">{{ 'HIGH' | translate }}</option>
-  </select>
-  <br>
-
-  <label for="climate">{{ 'PREFERRED_CLIMATE' | translate }}:</label>
-  <select id="climate" formControlName="climate" required>
-    <option value="warm">{{ 'WARM' | translate }}</option>
-    <option value="cold">{{ 'COLD' | translate }}</option>
-    <option value="temperate">{{ 'TEMPERATE' | translate }}</option>
-  </select>
-  <br>
-
-  <label for="activities">{{ 'ACTIVITIES' | translate }}:</label>
-  <select id="activities" formControlName="activities" multiple required>
-    <option value="beach">{{ 'BEACH' | translate }}</option>
-    <option value="hiking">{{ 'HIKING' | translate }}</option>
-    <option value="city_tours">{{ 'CITY_TOURS' | translate }}</option>
-    <option value="culture">{{ 'CULTURE' | translate }}</option>
-    <option value="adventure">{{ 'ADVENTURE' | translate }}</option>
-  </select>
-  <br>
-
-  <label for="duration">{{ 'TRAVEL_DURATION' | translate }}:</label>
-  <select id="duration" formControlName="duration" required>
-    <option value="weekend">{{ 'WEEKEND' | translate }}</option>
-    <option value="1_week">{{ 'ONE_WEEK' | translate }}</option>
-    <option value="2_weeks">{{ 'TWO_WEEKS' | translate }}</option>
-    <option value="more_than_2_weeks">{{ 'MORE_THAN_TWO_WEEKS' | translate }}</option>
-  </select>
-  <br>
+<section class="travel-container" style="margin-top: 200px;">
+  <div class="travel-info-container" *ngIf="!submitted">
+    <p class="info-text">{{ 'INFO_TEXT_TRAVEL' | translate }}</p>
+    <p class="additional-info">{{ 'ADDITIONAL_INFO_TRAVEL' | translate }}</p>
+  </div>
   
-  <button class="btn-services" type="submit" [disabled]="!travelForm.valid">
-    {{ 'GET_RECOMMENDATIONS' | translate }}
-    <div id="container-stars">
-      <div id="stars"></div>
-    </div>
-  </button>
- 
-</form>
+  
+  <div class="travel-form-container">
+    <form [formGroup]="travelForm" (ngSubmit)="getRecommendations()" class="travel-form">
+      
+      <label for="budget">{{ 'BUDGET' | translate }}:</label>
+      <select id="budget" formControlName="budget" required>
+        <option value="low">{{ 'LOW' | translate }}</option>
+        <option value="medium">{{ 'MEDIUM' | translate }}</option>
+        <option value="high">{{ 'HIGH' | translate }}</option>
+      </select>
+      <br>
 
+      <label for="climate">{{ 'PREFERRED_CLIMATE' | translate }}:</label>
+      <select id="climate" formControlName="climate" required>
+        <option value="warm">{{ 'WARM' | translate }}</option>
+        <option value="cold">{{ 'COLD' | translate }}</option>
+        <option value="temperate">{{ 'TEMPERATE' | translate }}</option>
+      </select>
+      <br>
 
-</section>
+      <label for="activities">{{ 'ACTIVITIES' | translate }}:</label>
+      <select id="activities" formControlName="activities" multiple required>
+        <option value="beach">{{ 'BEACH' | translate }}</option>
+        <option value="hiking">{{ 'HIKING' | translate }}</option>
+        <option value="city_tours">{{ 'CITY_TOURS' | translate }}</option>
+        <option value="culture">{{ 'CULTURE' | translate }}</option>
+        <option value="adventure">{{ 'ADVENTURE' | translate }}</option>
+      </select>
+      <br>
 
-<!-- Display message if no matches are found -->
-<div *ngIf="noMatches" class="no-matches">
-  <p>{{ 'NO_MATCHES' | translate }}</p>
-</div>
-
-
-
-<section>
-<!-- Display recommendations -->
-<div class="carousel">
-  <div class="slides" [style.transform]="'translateX(-' + currentIndex * 100 + '%)'">
-    <div *ngFor="let recommendation of recommendations" class="carousel-item">
-      <img [src]="getImageUrl(recommendation.destination)" alt="{{ recommendation.destination }}">
-      <h2>{{ recommendation.destination }}</h2>
-      <p><strong>{{ 'HIGHLIGHTS' | translate }}:</strong> {{ recommendation.translatedHighlights || recommendation.highlights }}</p>
-      <p><strong>{{ 'BEST_TIME_TO_VISIT' | translate }}:</strong> {{ recommendation.translatedBestTimeToVisit || recommendation.best_time_to_visit }}</p>
-      <p><strong>{{ 'KEY_ATTRACTIONS' | translate }}:</strong> {{ recommendation.translatedKeyAttractions?.join(', ') || recommendation.key_attractions.join(', ') }}</p>
-    </div>
+      <label for="duration">{{ 'TRAVEL_DURATION' | translate }}:</label>
+      <select id="duration" formControlName="duration" required>
+        <option value="weekend">{{ 'WEEKEND' | translate }}</option>
+        <option value="1_week">{{ 'ONE_WEEK' | translate }}</option>
+        <option value="2_weeks">{{ 'TWO_WEEKS' | translate }}</option>
+        <option value="more_than_2_weeks">{{ 'MORE_THAN_TWO_WEEKS' | translate }}</option>
+      </select>
+      <br>
+      
+      <button class="btn-services" type="submit" [disabled]="!travelForm.valid">
+        {{ 'GET_RECOMMENDATIONS' | translate }}
+        <div id="container-stars">
+          <div id="stars"></div>
+        </div>
+      </button>
+    </form>
   </div>
-  <div class="carousel-buttons">
-    <button id="prev">❮</button>
-    <button id="next">❯</button>
+
+  <div *ngIf="submitted">
+    <!-- Display message if no matches are found -->
+    <div *ngIf="noMatches" class="no-matches">
+      <p>{{ 'NO_MATCHES' | translate }}</p>
+    </div>
+  
+    <section>
+      <!-- Display recommendations -->
+      <div class="carousel">
+        <div class="slides" [style.transform]="'translateX(-' + currentIndex * 100 + '%)'">
+          <div *ngFor="let recommendation of recommendations" class="carousel-item">
+            <img [src]="getImageUrl(recommendation.destination)" alt="{{ recommendation.destination }}">
+            <h2>{{ recommendation.destination }}</h2>
+            <p><strong>{{ 'HIGHLIGHTS' | translate }}:</strong> {{ recommendation.translatedHighlights || recommendation.highlights }}</p>
+            <p><strong>{{ 'BEST_TIME_TO_VISIT' | translate }}:</strong> {{ recommendation.translatedBestTimeToVisit || recommendation.best_time_to_visit }}</p>
+            <p><strong>{{ 'KEY_ATTRACTIONS' | translate }}:</strong> {{ recommendation.translatedKeyAttractions?.join(', ') || recommendation.key_attractions.join(', ') }}</p>
+          </div>
+        </div>
+        <div class="carousel-buttons">
+          <button (click)="prevSlide()">❮</button>
+          <button (click)="nextSlide()">❯</button>
+        </div>
+      </div>
+      <div class="indicators">
+        <button *ngFor="let recommendation of recommendations; let i = index" [class.active]="i === currentIndex" (click)="setSlide(i)"></button>
+      </div>
+    </section>
   </div>
-</div>
-<div class="indicators">
-  <button *ngFor="let recommendation of recommendations; let i = index" [class.active]="i === currentIndex" (click)="setSlide(i)"></button>
-</div>
+  
 
-
-
-
-
-
-
-<!-- Include Bootstrap JS and Popper.js at the end of body -->
-
-
-
-</section>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</body>

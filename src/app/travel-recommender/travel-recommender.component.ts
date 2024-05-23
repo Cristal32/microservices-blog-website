@@ -10,12 +10,13 @@ import { TranslationService } from '../../services/translation.service';
   templateUrl: './travel-recommender.component.html',
   styleUrls: ['./travel-recommender.component.css']
 })
-export class TravelRecommenderComponent implements OnInit, AfterViewInit {
+export class TravelRecommenderComponent implements OnInit {
   travelForm!: FormGroup;
   recommendations: Destination[] = [];
   noMatches: boolean = false; // To track if no matches were found
   destinations: Destination[] = destinations;
   public currentIndex: number = 0;
+  submitted: boolean = false; // Track if the form is submitted
 
   constructor(private fb: FormBuilder, private translate: TranslateService, private translationService: TranslationService) {
     this.translate.setDefaultLang('en');
@@ -36,20 +37,18 @@ export class TravelRecommenderComponent implements OnInit, AfterViewInit {
     });
   }
 
-  ngAfterViewInit(): void {
-    document.getElementById('prev')?.addEventListener('click', () => {
-      this.currentIndex = (this.currentIndex > 0) ? this.currentIndex - 1 : this.recommendations.length - 1;
-      this.updateCarousel();
-    });
-
-    document.getElementById('next')?.addEventListener('click', () => {
-      this.currentIndex = (this.currentIndex < this.recommendations.length - 1) ? this.currentIndex + 1 : 0;
-      this.updateCarousel();
-    });
-  }
-
   setSlide(index: number): void {
     this.currentIndex = index;
+    this.updateCarousel();
+  }
+
+  prevSlide(): void {
+    this.currentIndex = (this.currentIndex > 0) ? this.currentIndex - 1 : this.recommendations.length - 1;
+    this.updateCarousel();
+  }
+
+  nextSlide(): void {
+    this.currentIndex = (this.currentIndex < this.recommendations.length - 1) ? this.currentIndex + 1 : 0;
     this.updateCarousel();
   }
 
@@ -73,6 +72,7 @@ export class TravelRecommenderComponent implements OnInit, AfterViewInit {
 
     // Update noMatches flag based on recommendations length
     this.noMatches = this.recommendations.length === 0;
+    this.submitted = true; // Set submitted to true upon form submission
     this.translateRecommendations(); // Translate the recommendations after filtering
     this.updateCarousel(); // Update the carousel after setting recommendations
   }
@@ -102,11 +102,12 @@ export class TravelRecommenderComponent implements OnInit, AfterViewInit {
     });
   }
 
+
   getImageUrl(destination: string): string {
     const imageUrls: { [key: string]: string } = {
       "Bali, Indonesia": "https://images.pexels.com/photos/2166553/pexels-photo-2166553.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
       "Reykjavik, Iceland": "https://images.pexels.com/photos/1009136/pexels-photo-1009136.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-      "Paris, France": "https://images.pexels.com/photos/532826/pexels-photo-532826.jpeg?auto=compress&cs=tinysrgb&w=400",
+      "Paris, France": "https://images.pexels.com/photos/161901/paris-sunset-france-monument-161901.jpeg?auto=compress&cs=tinysrgb&w=600",
       "Kyoto, Japan": "https://images.pexels.com/photos/1440476/pexels-photo-1440476.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
       "Cape Town, South Africa": "https://images.pexels.com/photos/60692/bird-animal-nature-strauss-60692.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
       "Sydney, Australia": "https://images.pexels.com/photos/2193300/pexels-photo-2193300.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
