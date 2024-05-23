@@ -95,6 +95,14 @@ In a microservices architecture, each microservice is a standalone application w
 #### What is Spring Cloud Eureka?
 Spring Cloud Eureka, part of the Spring Cloud Netflix project, is a service registry that allows microservices to register themselves and discover other services. In essence, it acts like a phone directory for your microservices, providing a mechanism for service-to-service discovery and registration.
 
+#### Architecture
+Steps :
+- microservices register to eureka server.
+- look up the service using eureka server.
+- eureka server will return the service information.
+
+<img src="docs\images\eureka-service-discovery.jpeg" alt="spring mvc layers" width="800" height="300">  
+
 #### 2. How do I get set up?
 
 In order to transform a common Spring Boot application into an Eureka Server, only three steps are needed:
