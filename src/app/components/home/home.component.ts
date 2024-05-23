@@ -1,5 +1,5 @@
 import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
-import { Router } from '@angular/router'; // Import Router
+import { ActivatedRoute, Router } from '@angular/router'; // Import Router
 import { EditComponent } from '../edit/edit.component';
 import {Blog} from '../../../models/blog';
 import { CommonModule } from '@angular/common';
@@ -40,6 +40,7 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private router: Router,
+    private route: ActivatedRoute,
     public matDialog: MatDialog,
     private service: RestapiService,
     private translate: TranslateService,
@@ -59,6 +60,15 @@ export class HomeComponent implements OnInit {
     console.log(this.id);
     this.getProfile();
     this.getBlogsByUserId();
+
+    // Handle receiving location from map component
+    this.route.queryParams.subscribe(params => {
+      this.latitude = params['lat'];
+      this.longitude = params['lng'];
+      if (this.latitude && this.longitude) {
+        console.log(`Selected Latitude: ${this.latitude}, Longitude: ${this.longitude}`);
+      }
+    });
   }
 
   openModal() {
@@ -149,6 +159,16 @@ export class HomeComponent implements OnInit {
         alert('Erreur lors de l\'envoi des données');
       }
     );
+  }
+
+  navigateToMap() {
+    this.router.navigate(['/maps'], {
+      queryParams: {
+        lat: this.latitude,
+        lng: this.longitude,
+        selectMap: true
+      }
+    });
   }
 
   translateBlogs(): void {

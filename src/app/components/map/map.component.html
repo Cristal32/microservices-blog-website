@@ -1,4 +1,14 @@
-<h1>Google Maps in Angular 17</h1>
-<google-map height="600px" width="800px" [options]="options"> 
-    <map-marker [position]="markerPosition"></map-marker>
-</google-map>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
+
+<h1>Select the Location for Your Blog</h1>
+
+<div class="page-container">
+  <div class="map-container">
+    <google-map height="100%" width="100%" [options]="options" (mapClick)="onMapClick($event)">
+      <map-marker *ngIf="markerPosition" [position]="markerPosition"></map-marker>
+    </google-map>
+  </div>
+  <div class="button-container" style="margin-top:-10px;">
+    <button class="confirm-button"  (click)="confirmLocation()">Confirm Location</button>
+  </div>
+</div>
