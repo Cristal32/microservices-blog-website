@@ -1,21 +1,18 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable, NgZone } from '@angular/core';
-
 import { user } from '../models/user';
 import {Blog} from '../models/blog';
 import { Comment } from '../models/Comment';
 import {BlogResponse} from '../models/blogResponse';
 import { Observable, throwError } from 'rxjs';
-
 import { catchError } from 'rxjs/operators';
-
-
 
 @Injectable({
   providedIn: 'root'
 })
 export class RestapiService {
   private apiGatewayUrl = 'http://localhost:8222';
+  private apiCommentUrl = 'http://localhost:9099';
 
   constructor(private http: HttpClient,private zone:NgZone) { }
   public getProfile(id:number):Observable<user>{
@@ -62,17 +59,16 @@ getBlogById(blogid: number): Observable<Blog> {
   return this.http.get<Blog>(`${this.apiGatewayUrl}/blogs/content/${blogid}`);
 }
 
-
-
+// Comments services
 
 public getCommentsByBlogId(blogId: number): Observable<Comment[]> {
-  return this.http.get<Comment[]>(`http://localhost:9099/comments/getComments/${blogId}`).pipe(
+  return this.http.get<Comment[]>(`${this.apiCommentUrl}/comments/getComments/${blogId}`).pipe(
     catchError(this.handleError)
   );
 }
 
 addComment(comment: Comment): Observable<Comment> {
-  return this.http.post<Comment>('http://localhost:9099/comments/addComment', comment);
+  return this.http.post<Comment>(`${this.apiCommentUrl}/comments/addComment`, comment);
 }
 
 private handleError(error: any): Observable<never> {

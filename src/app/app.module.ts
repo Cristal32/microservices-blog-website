@@ -11,19 +11,20 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { HttpClient } from '@angular/common/http'; // Ensure HttpClient is imported
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
-import { BlogsComponent } from './blogs/blogs.component';
-import { ContentComponent } from './content/content.component';
+import { BlogsComponent } from './components/blogs/blogs.component';
+import { ContentComponent } from './components/content/content.component';
 
 import { HttpClientModule } from '@angular/common/http';
 import { RestapiService } from '../services/restapi.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { GoogleMapsModule } from "@angular/google-maps";
 
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
-import { HomeComponent } from './home/home.component';
-import { SignInComponent } from './sign-in/sign-in.component';
+import { HomeComponent } from './components/home/home.component';
+import { SignInComponent } from './components/sign-in/sign-in.component';
 import { TestComponent } from './test/test.component';
 
 import { TranslationService } from '../services/translation.service';
@@ -31,6 +32,7 @@ import { TravelRecommenderComponent } from './travel-recommender/travel-recommen
 import { ReactiveFormsModule } from '@angular/forms';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MapComponent } from './components/map/map.component';
 
 // Function to create TranslateLoader
 export function HttpLoaderFactory(http: HttpClient) {
@@ -43,9 +45,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     ContentComponent,
     TestComponent,
     TravelRecommenderComponent,
-   
- 
-
+    MapComponent,
   ],
   imports: [
     BrowserModule,
@@ -64,7 +64,8 @@ export function HttpLoaderFactory(http: HttpClient) {
         useFactory: HttpLoaderFactory,
         deps: [HttpClient]
       }
-    })
+    }),
+    GoogleMapsModule
   ],
   providers: [
   RestapiService,

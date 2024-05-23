@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { RestapiService } from '../../services/restapi.service';
-import { user } from '../../models/user';
+import { RestapiService } from '../../../services/restapi.service';
+import { user } from '../../../models/user';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';

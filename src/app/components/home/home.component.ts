@@ -1,14 +1,14 @@
 import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router'; // Import Router
 import { EditComponent } from '../edit/edit.component';
-import {Blog} from '../../models/blog';
+import {Blog} from '../../../models/blog';
 import { CommonModule } from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { user } from '../../models/user';
-import { RestapiService } from '../../services/restapi.service';
+import { user } from '../../../models/user';
+import { RestapiService } from '../../../services/restapi.service';
 import { FormsModule } from '@angular/forms';
-import { TranslationService } from '../../services/translation.service';
+import { TranslationService } from '../../../services/translation.service';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({

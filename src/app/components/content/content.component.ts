@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Blog } from '../../models/blog';
-import { RestapiService } from '../../services/restapi.service';
-import { TranslationService } from '../../services/translation.service';
-import { Comment } from '../../models/Comment';
+import { Blog } from '../../../models/blog';
+import { RestapiService } from '../../../services/restapi.service';
+import { TranslationService } from '../../../services/translation.service';
+import { Comment } from '../../../models/Comment';
 
 @Component({
   selector: 'app-content',
