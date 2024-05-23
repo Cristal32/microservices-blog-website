@@ -1,3 +1,4 @@
 user/src/main/resources/application.yml
 config-server/
 **/application.yml
+.idea/
