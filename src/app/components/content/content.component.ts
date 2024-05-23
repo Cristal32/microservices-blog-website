@@ -128,6 +128,14 @@ export class ContentComponent implements OnInit {
   // ======================================== maps of a blog ===============================
 
   navigateToMap(): void {
-    this.router.navigate(['/maps', this.blog.latitude, this.blog.longitude]);
+    console.log('Latitude:', this.blog?.latitude);
+    console.log('Longitude:', this.blog?.longitude);
+  
+    if (this.blog && this.blog.latitude && this.blog.longitude) {
+      this.router.navigate(['/maps', this.blog.latitude, this.blog.longitude]);
+    } else {
+      console.error('Latitude and/or longitude are undefined');
+    }
   }
+  
 }
