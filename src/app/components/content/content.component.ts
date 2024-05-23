@@ -124,4 +124,10 @@ export class ContentComponent implements OnInit {
   getUserImage(gender: string): String {
     return Number(gender) === 1 ? '/assets/images/gar.png' : '/assets/images/fille.jpg';
   }
+
+  // ======================================== maps of a blog ===============================
+
+  navigateToMap(): void {
+    this.router.navigate(['/maps', this.blog.latitude, this.blog.longitude]);
+  }
 }

@@ -4,10 +4,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { ModalModule } from 'ngx-bootstrap/modal';
-import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-
-
 import { HttpClient } from '@angular/common/http'; // Ensure HttpClient is imported
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -22,9 +18,6 @@ import { GoogleMapsModule } from "@angular/google-maps";
 
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-
-import { HomeComponent } from './components/home/home.component';
-import { SignInComponent } from './components/sign-in/sign-in.component';
 import { TestComponent } from './test/test.component';
 
 import { TranslationService } from '../services/translation.service';
