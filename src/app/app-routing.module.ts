@@ -12,7 +12,8 @@ const routes: Routes = [
   { path: 'sign-in', component: SignInComponent },
   { path: 'content/:blogId', component: ContentComponent },
   { path: 'edit', component: EditComponent },
-  {path: 'maps', component: MapComponent},
+  { path: 'maps', component: MapComponent }, // Route without parameters
+  { path: 'maps/:lat/:lng', component: MapComponent }, 
   { path: 'home', component: HomeComponent },
  { 
     path: 'blogs',

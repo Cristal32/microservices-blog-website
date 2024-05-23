@@ -12,6 +12,8 @@ import { catchError } from 'rxjs/operators';
 })
 export class RestapiService {
   private apiGatewayUrl = 'http://localhost:8222';
+  private apiUserUrl = 'http://localhost:9098';
+  private apiBlogUrl = 'http://localhost:9097';
   private apiCommentUrl = 'http://localhost:9099';
 
   constructor(private http: HttpClient,private zone:NgZone) { }
