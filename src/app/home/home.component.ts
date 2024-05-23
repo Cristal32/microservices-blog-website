@@ -84,6 +84,7 @@ export class HomeComponent implements OnInit {
   navigateToRecommender() {
     this.router.navigate(['/recommender']);
   }
+  
   showBlogDetail(blog: Blog): void {
     console.log('blog:', blog);
     if (blog?.blogId) {

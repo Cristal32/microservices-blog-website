@@ -5,5 +5,6 @@ export interface Comment {
     content: string; // Add this line to include content
     date: string;
     gender:string;
+    translatedContent?: string; 
   }
   

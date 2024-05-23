@@ -29,6 +29,9 @@ import { TestComponent } from './test/test.component';
 import { TranslationService } from '../services/translation.service';
 import { TravelRecommenderComponent } from './travel-recommender/travel-recommender.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CarouselModule } from 'ngx-owl-carousel-o';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 // Function to create TranslateLoader
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -53,6 +56,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatDialogModule,
     HttpClientModule,
     ReactiveFormsModule,
+    CarouselModule,
+    BrowserAnimationsModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

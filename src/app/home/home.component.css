@@ -285,8 +285,11 @@ strong {
 
 /*******your blogs style*********************/
 
+
+
 .blogs {
-background-color: #f4e5f6;
+  background: linear-gradient(135deg, #f3c5d5, #d7bbf8, #f3eae5); /* Gradient from light pink, purple, to light beige */
+  background-color: #f5e6e8; 
 font-family: "Open Sans", sans-serif;
 display: flex;
 align-items: center;
@@ -296,6 +299,65 @@ margin-top: 0px;
 padding: 20px; /* Add padding for better spacing */
 }
 
+#container-stars-blogs {
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+}
+
+#stars-blogs {
+  position: absolute;
+  background: transparent;
+  width: 200rem;
+  height: 200rem;
+}
+
+#stars-blogs::after {
+  content: "";
+  position: absolute;
+  top: -10rem;
+  left: -100rem;
+  width: 100%;
+  height: 100%;
+  animation: animStarRotate 90s linear infinite;
+  background-image: radial-gradient(#ffffff 1px, transparent 1%);
+  background-size: 50px 50px;
+}
+
+#stars-blogs::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -50%;
+  width: 170%;
+  height: 500%;
+  animation: animStar 60s linear infinite;
+  background-image: radial-gradient(#ffffff 1px, transparent 1%);
+  background-size: 50px 50px;
+  opacity: 0.5;
+}
+
+@keyframes animStar {
+  from {
+      transform: translateY(0);
+  }
+  to {
+      transform: translateY(-135rem);
+  }
+}
+
+@keyframes animStarRotate {
+  from {
+      transform: rotate(360deg);
+  }
+  to {
+      transform: rotate(0);
+  }
+}
 .blogs .container-blogs {
 display: grid;
 grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Use auto-fill to automatically adjust column count */

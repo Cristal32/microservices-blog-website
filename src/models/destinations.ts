@@ -93,16 +93,7 @@ export const destinations: Destination[] = [
       best_time_to_visit: "May to June, September to October",
       key_attractions: ["Sagrada Familia", "Park Güell"]
     },
-    {
-      destination: "Queenstown, New Zealand",
-      budget: "high",
-      climate: "cold",
-      activities: ["adventure", "hiking"],
-      duration: ["1_week", "2_weeks", "more_than_2_weeks"],
-      highlights: "Stunning landscapes, adventure sports, vibrant nightlife",
-      best_time_to_visit: "December to February, June to August",
-      key_attractions: ["Lake Wakatipu", "Skyline Queenstown"]
-    },
+   
     {
       destination: "Marrakech, Morocco",
       budget: "low",
@@ -153,16 +144,7 @@ export const destinations: Destination[] = [
       best_time_to_visit: "November to April",
       key_attractions: ["Old Havana", "Malecon"]
     },
-    {
-      destination: "Santorini, Greece",
-      budget: "medium",
-      climate: "warm",
-      activities: ["beach", "culture", "adventure"],
-      duration: ["weekend", "1_week"],
-      highlights: "Stunning sunsets, beautiful beaches, historic ruins",
-      best_time_to_visit: "April to October",
-      key_attractions: ["Oia Village", "Akrotiri Ruins"]
-    },
+    
     {
       destination: "Banff, Canada",
       budget: "high",
@@ -213,16 +195,7 @@ export const destinations: Destination[] = [
       best_time_to_visit: "April to May, September to October",
       key_attractions: ["Schönbrunn Palace", "St. Stephen's Cathedral"]
     },
-    {
-      destination: "Vancouver, Canada",
-      budget: "high",
-      climate: "temperate",
-      activities: ["hiking", "adventure", "city_tours"],
-      duration: ["1_week", "2_weeks"],
-      highlights: "Stunning landscapes, vibrant city life, outdoor adventures",
-      best_time_to_visit: "March to May, September to November",
-      key_attractions: ["Stanley Park", "Granville Island"]
-    },
+    
     {
       destination: "Istanbul, Turkey",
       budget: "low",
@@ -233,16 +206,8 @@ export const destinations: Destination[] = [
       best_time_to_visit: "April to May, September to November",
       key_attractions: ["Hagia Sophia", "Topkapi Palace"]
     },
-    {
-      destination: "Auckland, New Zealand",
-      budget: "medium",
-      climate: "temperate",
-      activities: ["adventure", "hiking", "city_tours"],
-      duration: ["1_week", "2_weeks", "more_than_2_weeks"],
-      highlights: "Stunning landscapes, vibrant city life, outdoor adventures",
-      best_time_to_visit: "March to May, September to November",
-      key_attractions: ["Sky Tower", "Waiheke Island"]
-    },
+   
+  
     {
       destination: "Seoul, South Korea",
       budget: "medium",
@@ -353,16 +318,7 @@ export const destinations: Destination[] = [
       best_time_to_visit: "May to September",
       key_attractions: ["Edinburgh Castle", "Royal Mile"]
     },
-    {
-      destination: "Florence, Italy",
-      budget: "medium",
-      climate: "temperate",
-      activities: ["culture", "city_tours", "adventure"],
-      duration: ["weekend", "1_week"],
-      highlights: "Renaissance art, historic architecture, vibrant culture",
-      best_time_to_visit: "May to September",
-      key_attractions: ["Uffizi Gallery", "Cathedral of Santa Maria del Fiore"]
-    },
+    
     {
       destination: "Moscow, Russia",
       budget: "low",

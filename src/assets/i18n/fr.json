@@ -106,7 +106,14 @@
         "NO_MATCHES": "Aucune destination ne correspond à vos préférences. Veuillez essayer d'autres options.",
         "HIGHLIGHTS": "Points forts",
         "BEST_TIME_TO_VISIT": "Meilleure période pour visiter",
-        "KEY_ATTRACTIONS": "Attractions clés"
+        "KEY_ATTRACTIONS": "Attractions clés",
+
+
+
+
+        "EXPLORE_NEXT_ADVENTURE": "Explorez votre prochaine aventure",
+  "PERSONALIZED_TRAVEL_RECOMMENDATIONS": "Obtenez des recommandations de voyage personnalisées et planifiez votre voyage parfait.",
+  "DISCOVER_NOW": "Découvrir maintenant"
             
 }
   

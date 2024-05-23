@@ -175,18 +175,19 @@
         </div>
     </section>
     <!--profile end-->
-	<section class="unique-travel-recommendation-section"  >
-        <div class="unique-container">
-            <h1 class="unique-heading">Explore Your Next Adventure</h1>
-            <p class="unique-description">Get personalized travel recommendations and plan your perfect trip.</p>
-			<a href="/travel-recommendation" class="btn-services"  (click)="navigateToRecommender()" style="padding: 15px 30px;   margin-left:180px;">
-                <strong>Discover Now</strong>
-                <div id="container-stars">
-                    <div id="stars"></div>
-                </div>
-            </a>
-        </div>
-    </section>
+	<section class="unique-travel-recommendation-section">
+		<div class="unique-container">
+		  <h1 class="unique-heading">{{ 'EXPLORE_NEXT_ADVENTURE' | translate }}</h1>
+		  <p class="unique-description">{{ 'PERSONALIZED_TRAVEL_RECOMMENDATIONS' | translate }}</p>
+		  <a class="btn-services" (click)="navigateToRecommender()" style="padding: 15px 30px; margin-left:180px;">
+			<strong>{{ 'DISCOVER_NOW' | translate }}</strong>
+			<div id="container-stars">
+			  <div id="stars"></div>
+			</div>
+		  </a>
+		</div>
+	  </section>
+	  
     <!--add blog start -->
     <section id="add" class="portfolio" style="margin-top:-75px;">
         <div class="portfolio-details"  >
@@ -489,35 +490,39 @@
 
 
         <!-- Blog -->
-<section class="blogs" style="margin-top: -15px; margin-bottom:0px;" *ngIf="blogs && translatedBlogs">
-	<div class="container-blogs">
-	  <div class="card" *ngFor="let blog of blogs" (click)="showBlogDetail(blog)">
-		<div class="card-header">
-		  <img [src]="'data:image/jpeg;base64,' + blog.image" alt="Blog Image">
-		</div>
-		<div class="card-body" style="margin-top:30px;">
-		  <span class="tag tag-teal">{{ blog.country }}</span>
-		  <h4>{{ (blog.blogId !== undefined && translatedBlogs[blog.blogId]?.title) ? translatedBlogs[blog.blogId]?.title : blog.title }}</h4>
-		  <p>{{ (blog.blogId !== undefined && translatedBlogs[blog.blogId]?.description) ? translatedBlogs[blog.blogId]?.description : blog.description }}</p>
-		  <div class="user">
-			<img [src]="u.imagePath" alt="{{ 'USER_AVATAR' | translate }}" />
-			<div class="user-info">
-			  <h5>{{ u.name }}</h5>
-			  <small>{{ blog.date }}</small>
-			  <div class="like-section">
-				<button (click)="toggleLike(blog, $event)">
-				  <span class="like-icon">
-					<i class='bx bxs-heart' [style.color]="blog.liked ? 'red' : 'grey'"></i>
-				  </span>
-				</button>
-				<span class="like-count">{{ blog.likes }}</span>
-			  </div>
+		<section class="blogs" style="margin-top: -15px; margin-bottom:0px;" *ngIf="blogs && translatedBlogs">
+			<div id="container-stars-blogs">
+				<div id="stars-blogs"></div>
 			</div>
-		  </div>
-		</div>
-	  </div>
-	</div>
-  </section>
+			<div class="container-blogs">
+				<div class="card" *ngFor="let blog of blogs" (click)="showBlogDetail(blog)">
+					<div class="card-header">
+						<img [src]="'data:image/jpeg;base64,' + blog.image" alt="Blog Image">
+					</div>
+					<div class="card-body" style="margin-top:30px;">
+						<span class="tag tag-teal">{{ blog.country }}</span>
+						<h4>{{ (blog.blogId !== undefined && translatedBlogs[blog.blogId]?.title) ? translatedBlogs[blog.blogId]?.title : blog.title }}</h4>
+						<p>{{ (blog.blogId !== undefined && translatedBlogs[blog.blogId]?.description) ? translatedBlogs[blog.blogId]?.description : blog.description }}</p>
+						<div class="user">
+							<img [src]="u.imagePath" alt="{{ 'USER_AVATAR' | translate }}" />
+							<div class="user-info">
+								<h5>{{ u.name }}</h5>
+								<small>{{ blog.date }}</small>
+								<div class="like-section">
+									<button (click)="toggleLike(blog, $event)">
+										<span class="like-icon">
+											<i class='bx bxs-heart' [style.color]="blog.liked ? 'red' : 'grey'"></i>
+										</span>
+									</button>
+									<span class="like-count">{{ blog.likes }}</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		
   
 		  
 		

@@ -14,22 +14,21 @@ export class ContentComponent implements OnInit {
   blog: Blog = {} as Blog;
   id: number = 0;
   blogid: number = 0;
-  Name :String =''
-  userGender :string =''
+  Name: string = '';
+  userGender: string = '';
   comments: Comment[] = [];
   newComment: Comment = {
     blogId: 0,
     userId: 0,
     userName: '',
     content: '',
-    gender:'',
+    gender: '',
     date: new Date().toISOString()
   };
 
   translatedTitle: string = '';
   translatedCountry: string = '';
   translatedDescription: string = '';
-
 
   constructor(
     private route: ActivatedRoute,
@@ -40,13 +39,13 @@ export class ContentComponent implements OnInit {
 
   ngOnInit() {
     this.id = Number(sessionStorage.getItem('uId'));
-    this.userGender =String(sessionStorage.getItem('userGender'));
-    this.Name=String(sessionStorage.getItem('uName'))
+    this.userGender = String(sessionStorage.getItem('userGender'));
+    this.Name = String(sessionStorage.getItem('uName'));
     this.blogid = Number(this.route.snapshot.paramMap.get('blogId'));
     this.newComment.userName = this.Name;
     this.newComment.blogId = this.blogid;
     this.newComment.userId = this.id;
-    this.newComment.gender =this.userGender;
+    this.newComment.gender = this.userGender;
     this.getComments();
     this.getBlogById();
   }
@@ -56,10 +55,9 @@ export class ContentComponent implements OnInit {
       (data) => {
         this.blog = data;
         this.translateFields();
-       
       },
       (error) => {
-       
+        console.error('Error:', error);
       }
     );
   }
@@ -68,24 +66,20 @@ export class ContentComponent implements OnInit {
     this.service.getCommentsByBlogId(this.blogid).subscribe(
       (data: Comment[]) => {
         this.comments = data;
-      
+        this.translateComments();
       },
       (error) => {
         console.error('Error:', error);
-
         alert('Failed to load comments. Please try again later.');
       }
     );
   }
 
   submitComment(): void {
-    console.log('Submit button clicked');  // Debugging statement
-    console.log('Comment content:', this.newComment.content);  // Debugging statement
     if (this.newComment.content) {
       this.newComment.date = new Date().toISOString();  // Set current date as ISO string before submission
       this.service.addComment(this.newComment).subscribe({
         next: (comment) => {
-          console.log('username:', this.newComment.userName);
           this.newComment.content = '';  // Clear the text area after submission
           this.newComment.date = new Date().toISOString();  // Reset date if needed after successful submission
           window.location.reload();
@@ -96,7 +90,6 @@ export class ContentComponent implements OnInit {
       console.log('Comment content is empty');  // Debugging statement
     }
   }
-
 
   translateFields(): void {
     const userLanguage = navigator.language.split('-')[0];  // Get browser language
@@ -114,6 +107,17 @@ export class ContentComponent implements OnInit {
     this.translationService.translate(this.blog.description, userLanguage).subscribe({
       next: (translatedText: string) => this.translatedDescription = translatedText,
       error: (error: any) => console.error('Translation error for description:', error)
+    });
+  }
+
+  translateComments(): void {
+    const userLanguage = navigator.language.split('-')[0];  // Get browser language
+
+    this.comments.forEach(comment => {
+      this.translationService.translate(comment.content, userLanguage).subscribe({
+        next: (translatedText: string) => comment.translatedContent = translatedText,
+        error: (error: any) => console.error('Translation error for comment:', error)
+      });
     });
   }
 

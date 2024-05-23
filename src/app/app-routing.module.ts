@@ -15,16 +15,12 @@ const routes: Routes = [
  { 
     path: 'blogs',
      component: BlogsComponent,
-    children: [
-      // Add child routes here if needed
-    ]
+    
   },
   { 
     path: 'recommender',
      component: TravelRecommenderComponent,
-    children: [
-      // Add child routes here if needed
-    ]
+  
   },
   // Add a route for the '/content' path
   { path: 'content', redirectTo: '/home', pathMatch: 'full' } // or specify a default component to render
