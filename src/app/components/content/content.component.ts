@@ -48,6 +48,8 @@ export class ContentComponent implements OnInit {
     this.newComment.gender = this.userGender;
     this.getComments();
     this.getBlogById();
+
+ 
   }
 
   getBlogById(): void {
@@ -55,6 +57,7 @@ export class ContentComponent implements OnInit {
       (data) => {
         this.blog = data;
         this.translateFields();
+        console.log(this.blog)
       },
       (error) => {
         console.error('Error:', error);

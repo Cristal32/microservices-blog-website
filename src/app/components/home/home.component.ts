@@ -184,7 +184,8 @@ export class HomeComponent implements OnInit {
     this.service.getBlogsByUserId(this.id).subscribe(
       (data) => {
         this.blogs = data;
-        this.translateBlogs();
+        this.translateBlogs(); 
+        
       },
       (error) => {
         console.log('Error:', error);

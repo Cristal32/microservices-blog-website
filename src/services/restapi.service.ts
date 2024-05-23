@@ -12,9 +12,7 @@ import { catchError } from 'rxjs/operators';
 })
 export class RestapiService {
   private apiGatewayUrl = 'http://localhost:8222';
-  private apiUserUrl = 'http://localhost:9098';
-  private apiBlogUrl = 'http://localhost:9097';
-  private apiCommentUrl = 'http://localhost:9099';
+
 
   constructor(private http: HttpClient,private zone:NgZone) { }
   public getProfile(id:number):Observable<user>{
@@ -64,13 +62,13 @@ getBlogById(blogid: number): Observable<Blog> {
 // Comments services
 
 public getCommentsByBlogId(blogId: number): Observable<Comment[]> {
-  return this.http.get<Comment[]>(`${this.apiCommentUrl}/comments/getComments/${blogId}`).pipe(
+  return this.http.get<Comment[]>(`${this.apiGatewayUrl}/comments/getComments/${blogId}`).pipe(
     catchError(this.handleError)
   );
 }
 
 addComment(comment: Comment): Observable<Comment> {
-  return this.http.post<Comment>(`${this.apiCommentUrl}/comments/addComment`, comment);
+  return this.http.post<Comment>(`${this.apiGatewayUrl}/comments/addComment`, comment);
 }
 
 private handleError(error: any): Observable<never> {
