@@ -3,19 +3,17 @@ package com.app.user.services;
 
 
 import com.app.user.Hash1;
-import com.app.user.models.CommentAddedEvent;
 import com.app.user.models.user;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.app.user.models.userSent;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import com.app.user.repositories.userRepository;
 
 import java.security.NoSuchAlgorithmException;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.kafka.core.KafkaTemplate;
-import org.springframework.stereotype.Service;
-import com.fasterxml.jackson.databind.ObjectMapper;
+
 
 @Service
 public class userService {
@@ -23,17 +21,25 @@ public class userService {
      private Hash1 hash=new Hash1();
 
 
+    private KafkaTemplate<String, userSent> kafkaTemplate;
     @Autowired
-    public userService(userRepository userrepository) {
-        this.userrepository = userrepository;
 
+
+
+    public userService(userRepository userrepository,KafkaTemplate<String, userSent> kafkaTemplate) {
+        this.userrepository = userrepository;
+         this.kafkaTemplate=kafkaTemplate;
     }
 
 
 
+    private static final String TOPIC = "user_topic";
 
 
 
+    public void sendUser(userSent user) {
+        kafkaTemplate.send(TOPIC, user);
+    }
 
         //add user
         public user addUser(user u) throws NoSuchAlgorithmException {

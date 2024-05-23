@@ -15,12 +15,14 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="comment" target="17" />
+      <module name="common" target="17" />
       <module name="config-server" target="17" />
       <module name="login" target="17" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="app" options="" />
       <module name="blog" options="-parameters" />
       <module name="comment" options="-parameters" />
       <module name="comments" options="-parameters" />

@@ -16,8 +16,10 @@ public class Comment {
 
     private Long blogId;
     private Long userId;
+    private String username;
+    private String gender;
     private String content;
-    private Date date;
+    private String date;
 
     // Getters and Setters
     public Long getCommentId() {
@@ -52,11 +54,40 @@ public class Comment {
         this.content = content;
     }
 
-    public Date getDate() {
+    public String  getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public Comment(Long blogId, Long userId, String username, String gender, String content, String date) {
+
+        this.blogId = blogId;
+        this.userId = userId;
+        this.username = username;
+        this.gender = gender;
+        this.content = content;
+        this.date = date;
+    }
+
+    public Comment() {
     }
 }

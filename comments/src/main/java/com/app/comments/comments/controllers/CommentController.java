@@ -27,4 +27,11 @@ public class CommentController {
         commentservice.addComment(comment);
     }
 
+
+    @GetMapping("/getAll")
+    public List<Comment> getAll(){
+        return this.commentservice.getAll();
+    }
+
+
 }

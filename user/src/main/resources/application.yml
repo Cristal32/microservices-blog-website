@@ -9,6 +9,12 @@ server:
 spring:
   application:
     name: user
+  kafka:
+    bootstrap-servers: kafka:9092 # Utiliser le nom du service Docker
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+
 
 
 

@@ -1,32 +1,44 @@
+server:
+  port: 9099  # Port sur lequel l'application écoute
 eureka:
   instance:
-    hostname: comments
+    hostname: user
   client:
     service-url:
       defaultZone: http://discovery:8761/eureka/
-server:
-  port: 9099
+
 spring:
   application:
-    name: comments
-
-
-
+    name: comments  # Nom de l'application Spring
+  kafka:
+    bootstrap-servers: kafka:9092 # Utiliser le nom du service Docker
+    consumer:
+      group-id: comment-group
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring.json.trusted.packages: "*"
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
   datasource:
-    driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://postgres:5432/comments # Correct service name and database
-    username: postgres
-    password: 2001195
+    driver-class-name: org.postgresql.Driver  # Classe du driver PostgreSQL
+    url: jdbc:postgresql://postgres:5432/comments  # URL de connexion à la base de données PostgreSQL
+    username: postgres  # Nom d'utilisateur de la base de données
+    password: 2001195  # Mot de passe de la base de données
+
   jpa:
     hibernate:
-      ddl-auto: update
-    database: postgresql
-    database-platform: org.hibernate.dialect.PostgreSQLDialect
+      ddl-auto: update  # Mise à jour automatique du schéma de la base de données
+    database: postgresql  # Type de base de données
+    database-platform: org.hibernate.dialect.PostgreSQLDialect  # Dialecte Hibernate pour PostgreSQL
+
+
 
 management:
   tracing:
     sampling:
-      probability: 1.0 # only for testing purpose, switch back to 0.1 for production code
+      probability: 1.0  # Probabilité d'échantillonnage pour le traçage (1.0 pour 100%, à réduire en production)
   zipkin:
     tracing:
-      endpoint: http://zipkin:9411/api/v2/spans
+      endpoint: http://zipkin:9411/api/v2/spans  # Point de terminaison du serveur Zipkin
