@@ -2,6 +2,9 @@
 
 This project is a tourism blog application where each user can add a blog and access all blogs. The application uses a microservices architecture for better scalability and maintainability. The main components of the application are developed using Spring Boot for the backend and Angular for the frontend.
 
+### Overview 
+#### 
+
 **Frameworks used:**
 - <span> Backend: Spring Boot 3.2.4 <img alt="Spring" width="30px" style="padding-right:10px;" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/spring/spring-original.svg" /> , Maven <img alt="Maven" width="30px" style="padding-right:10px;" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/maven/maven-original.svg" />, Java 17  <img alt="Java" width="30px" style="padding-right:10px;" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg" /></san>
 - <span> Frontend: Angular 16.1.2 <img alt="Spring" width="30px" style="padding-right:10px;" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/angular/angular-original.svg" /></span>
@@ -12,7 +15,7 @@ This project is a tourism blog application where each user can add a blog and ac
 
 **IDEs:**
 
-- <img align="left" alt="Eclipse" width="30px" style="padding-right:10px;" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/eclipse/eclipse-original.svg" /> **Eclipse**: for the Java-based backend.
+- <img align="left" alt="Eclipse" width="30px" style="padding-right:10px;" src="docs/images/IntelliJ_IDEA_Icon.svg.png" /> **Intellij**: for the Java-based backend.
 
 - <img align="left" alt="VSCode" width="30px" style="padding-right:10px;" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vscode/vscode-original.svg" /> **VSCode**: for the frontend.
 
@@ -31,16 +34,21 @@ This project is a tourism blog application where each user can add a blog and ac
 ## Content
 
 - [0. Setting Up Microservices](#0-setting-up-microservices)
-    - [1. Overview](#1-setup-the-frontend-application)
-    - [2. Prequeries](#2-app-layout)
-- [1. Postgres & PGAdmin on docker](#1-postgres-&-pgadmin-on-docker)
-- [2. Create new microservices](#2-mvc-design-pattern)
-- [3. Communication between microservices using restTemplate](#2-file-system)
-- [4. Service Discovery using Eureka](#1-database-connexion--configuration)
-- [5. Spring Cloud Gateway](#2-setup-frontend-application)
-    - [1. Setup the frontend application](#1-setup-the-frontend-application)
-    - [2. App layout](#2-app-layout)
+    - [1. Overview](#1-overview)
+    - [2. Prequeries](#2-prequeries)
+- [1. Postgres & PGAdmin on docker](#1-postgres-pgadmin-on-docker)
+- [2. Create new microservices](#2-create-new-microservices)
+- [3. Communication between microservices using restTemplate](#3-communication-between-microservices-using-restTemplate)
+- [4. Service Discovery using Eureka](#4-service-discovery-using-eureka)
+    - [1. Quick summary](#1-quick-summary)
+    - [2. Architecture](#2-architecture)
+    - [3. How do I get set up?](#3-how-do-i-get-set-up)
+- [5. Spring Cloud Gateway](#5-spring-cloud-gateway)
+    - [1. Architecture](#1-architecture)
+    - [2. Setup Spring Cloud Gateway](#2-setup-spring-cloud-gateway)
     - [3. Views](#2-views)
+- [6. Distributed Tracing Sleuth & Zipkin](#6-distributed-tracing-sleuth--zipkin)
+    - [1. What is Distributed Tracing?](#1-what-is-distributed-tracing?)
 
 ## 0. Setting Up Microservices
 
@@ -92,14 +100,14 @@ ResponseEntity<user> response = restTemplate.getForEntity("http://gateway:8222/u
 
 ## 4. Service Discovery using Eureka
 
-#### 1. Quick summary
+### 1. Quick summary
 #### What is Service Discovery?
 In a microservices architecture, each microservice is a standalone application with specific business functionality. Since these microservices need to communicate with each other to function as a complete application, they need to know each other’s network locations. Service Discovery comes into play here, maintaining a record of these services’ locations, helping them find each other, and enabling communication.
 
 #### What is Spring Cloud Eureka?
 Spring Cloud Eureka, part of the Spring Cloud Netflix project, is a service registry that allows microservices to register themselves and discover other services. In essence, it acts like a phone directory for your microservices, providing a mechanism for service-to-service discovery and registration.
 
-#### 2. Architecture
+### 2. Architecture
 Steps :
 - microservices register to eureka server.
 - look up the service using eureka server.
@@ -107,7 +115,7 @@ Steps :
 
 <img src="docs\images\eureka-service-discovery.jpeg" alt="spring mvc layers" width="800" height="300">  
 
-#### 3. How do I get set up?
+### 3. How do I get set up?
 
 In order to transform a common Spring Boot application into an Eureka Server, only three steps are needed:
 
@@ -213,4 +221,19 @@ To send these logs to Zipkin, add the Zipkin starter in `pom.xml`:
     <artifactId>spring-cloud-starter-zipkin</artifactId>
 </dependency>
 ```
+
+## 7. Containerizing microservices using Docker
+### 1. Docker — Overview
+
+Docker is a **containerization technology** that allows developers to package an application along with all its dependencies into a container. These containers are lightweight, portable, and can run on any platform that supports Docker. A docker container simplifies the process of building, shipping, and running applications, making it easier to manage and scale them.
+
+#### Four Major Components of Docker
+
+- **Container:** A container is a standalone executable package that includes an application and all its dependencies.  
+
+- **Image:** An image is a read-only template that defines the contents and configuration of a container. 
+
+- **Docker Engine:** The Docker Engine is the core component responsible for building, running, and managing containers. 
+
+- **Registry:** Docker images can be stored and shared in registries, which act as centralized repositories.
 
