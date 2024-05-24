@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: interface
+  name: zipkin-deployment
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: interface
+      app: zipkin
   template:
     metadata:
       labels:
-        app: interface
+        app: zipkin
     spec:
       containers:
-        - name: interface
-          image: lam2001/website1:interface-latest
+        - name: zipkin
+          image: openzipkin/zipkin:latest
           ports:
-            - containerPort: 4200
+            - containerPort: 9411

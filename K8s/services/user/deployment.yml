@@ -14,9 +14,9 @@ spec:
     spec:
       containers:
         - name: user
-          image: lam2001/website1:user-image-v1
+          image: lam2001/website1:user-image-latest
           ports:
-            - containerPort: 8080
+            - containerPort: 9098
           env:
             - name: SPRING_DATASOURCE_URL
               value: jdbc:postgresql://postgres:5432/users

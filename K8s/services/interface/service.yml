@@ -1,11 +1,11 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: gateway
+  name: interface
 spec:
   type: LoadBalancer
   ports:
-    - port: 8222
-      targetPort: 8222
+    - port: 4200
+      targetPort: 4200
   selector:
-    app: gateway
+    app: interface

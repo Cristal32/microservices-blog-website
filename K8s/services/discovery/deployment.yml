@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
         - name: discovery
-          image: lam2001/website1:discovery-image-v1
+          image: lam2001/website1:discovery-image-latest
           ports:
             - containerPort: 8761

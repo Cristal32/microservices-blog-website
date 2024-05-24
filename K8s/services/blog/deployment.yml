@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: blog
-          image: lam2001/website1:blog-image-v1
+          image: lam2001/website1:blog-image-latest
           ports:
             - containerPort: 9097
           env:

@@ -1,11 +1,11 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: blog
+  name: comments
 spec:
   type: LoadBalancer
   ports:
-    - port: 9097
-      targetPort: 9097
+    - port: 9099
+      targetPort: 9099
   selector:
-    app: blog
+    app: comments

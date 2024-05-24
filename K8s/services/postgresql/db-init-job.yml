@@ -13,5 +13,12 @@ spec:
               value: "postgres"
             - name: POSTGRES_PASSWORD
               value: "2001195"
-          command: ["sh", "-c", "until pg_isready -h postgres; do echo waiting for database; sleep 2; done; PGPASSWORD=$POSTGRES_PASSWORD psql -h postgres -U $POSTGRES_USER -c \"CREATE DATABASE users\"; PGPASSWORD=$POSTGRES_PASSWORD psql -h postgres -U $POSTGRES_USER -c \"CREATE DATABASE blogs\""]
+          command: ["sh", "-c", "
+            until pg_isready -h postgres; do
+              echo waiting for database;
+              sleep 2;
+            done;
+            PGPASSWORD=$POSTGRES_PASSWORD psql -h postgres -U $POSTGRES_USER -c \"CREATE DATABASE users\";
+            PGPASSWORD=$POSTGRES_PASSWORD psql -h postgres -U $POSTGRES_USER -c \"CREATE DATABASE blogs\";
+            PGPASSWORD=$POSTGRES_PASSWORD psql -h postgres -U $POSTGRES_USER -c \"CREATE DATABASE comments\""]
       restartPolicy: OnFailure
