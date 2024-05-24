@@ -55,6 +55,7 @@ This project is a tourism blog application where each user can add a blog and ac
     - [2. Set Up](#2-set-up)
 - [8. Deploy microservices to local Kubernetes](#8-deploy-microservices-to-local-kubernetes)
 - [9. Deploy with Gitlab](#9-deploy-with-gitlab)
+- [10. Maps functionality](#10-maps-functionality)
     
 ## 0. Setting Up Microservices
 
@@ -318,3 +319,14 @@ spec:
 We started by manually pushing our code into Gitlab. This is the intended pipeline we're aiming to achieve:
 
 <img src="assets/images/gitlab.PNG" alt="spring mvc layers" width="800" height="300">
+
+## 10. Maps functionality
+
+To integrate google maps into our project:
+1. We generated the maps API key from google cloud and included it in the project
+2. Install the library in Angular:
+```
+npm install angular@google-maps
+```
+
+With that, each blog is associated to a specific location on the amp that we can visualize.
