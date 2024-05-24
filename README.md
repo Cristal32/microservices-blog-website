@@ -42,7 +42,10 @@ This project is a tourism blog application where each user can add a blog and ac
     - [2. Setup Spring Cloud Gateway](#2-setup-spring-cloud-gateway)
     - [3. Views](#2-views)
 - [6. Distributed Tracing Sleuth & Zipkin](#6-distributed-tracing-sleuth--zipkin)
-    - [1. What is Distributed Tracing?](#1-what-is-distributed-tracing?)
+    - [1. What is Distributed Tracing?](#1-what-is-distributed-tracing)
+- [7. Containerizing microservices using Docker](#7-containerizing-microservices-using-docker)
+    - [1. Docker — Overview](#1-docker--overview)
+- [8. Deploy with Gitlab](#8-deploy-with-gitlab)
 
 ## 0. Setting Up Microservices
 
@@ -231,3 +234,8 @@ Docker is a **containerization technology** that allows developers to package an
 
 - **Registry:** Docker images can be stored and shared in registries, which act as centralized repositories.
 
+## 8. Deploy with Gitlab
+
+We started by manually pushing our code into Gitlab. This is the intended pipeline we're aiming to achieve:
+
+<img src="assets/images/gitlab.PNG" alt="spring mvc layers" width="800" height="300">
