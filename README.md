@@ -57,6 +57,13 @@ This project is a tourism blog application where each user can add a blog and ac
   - [2. Set Up](#2-set-up)
 - [8. Deploy microservices to local Kubernetes](#8-deploy-microservices-to-local-kubernetes)
 - [9. Deploy with Gitlab](#9-deploy-with-gitlab)
+  <<<<<<< HEAD
+
+=======
+
+- [10. Maps functionality](#10-maps-functionality)
+
+> > > > > > > 3760f1e67752fa6e1569fa2fa09e3c671fd24c8c
 
 ## 0. Setting Up Microservices
 
@@ -344,16 +351,29 @@ We started by manually pushing our code into Gitlab. This is the intended pipeli
 
 <img src="assets/images/gitlab.PNG" alt="spring mvc layers" width="800" height="300">
 
+## 10. Maps functionality
+
+To integrate google maps into our project:
+
+1. We generated the maps API key from google cloud and included it in the project
+2. Install the library in Angular:
+
+```
+npm install angular@google-maps
+```
+
+With that, each blog is associated to a specific location on the map that we can visualize.
+
 ## 11.Translation Functionality
 
 The tourism blog application supports multilingual content, ensuring accessibility for users who speak different languages. The translation functionality is implemented as follows:
 
-1- Static Elements:
+### Static Elements:
 
 For static elements of the website (such as navigation menus, labels, and other fixed text), we use the Angular translation library @ngx-translate/core. This library allows us to manage translations through JSON files (en.json and fr.json) for each supported language.
 These JSON files contain key-value pairs where keys are identifiers used in the code, and values are the corresponding translations in different languages.
 
-2- Dynamic Content:
+### Dynamic Content:
 
 For dynamic content such as blog posts and user comments, we use the Google Cloud Translator API. This allows real-time translation of user-generated content.
 When a user submits a blog post or comment, the content is sent to the Google Cloud Translator API, which returns the translated text.
