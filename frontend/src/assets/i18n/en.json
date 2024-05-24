@@ -1,0 +1,129 @@
+{
+    "JOURNEY_JOURNALS": "Journey Journals",
+    "EXPLORE_SHARE_INSPIRE": "Explore, Share, Inspire!",
+    "WHAT_TO_DISCOVER": "What do you want to discover?",
+    "SEARCH": "Search",
+    "SELECT_ON_MAP": "Select localisation in map",
+    "TITLE": "Login and Registration",
+  "IMAGE_ALT": "image here",
+  "TEXT_1": "Every new travel is a new adventure",
+  "TEXT_2": "Let's get connected",
+  "LOGIN": "Login",
+  "ENTER_EMAIL": "Enter your email",
+  "ENTER_PASSWORD": "Enter your password",
+  "FORGOT_PASSWORD": "Forgot password?",
+  "SUBMIT": "Submit",
+  "NO_ACCOUNT": "Don't have an account?",
+  "SIGNUP_NOW": "Signup now",
+  "SIGNUP": "Signup",
+  "ENTER_NAME": "Enter your name",
+  "ENTER_PHONE": "Enter your phone",
+  "ENTER_ADDRESS": "Enter your address",
+  "CONFIRM_PASSWORD": "Confirm password",
+  "MALE": "Male",
+  "FEMALE": "Female",
+  "HAVE_ACCOUNT": "Already have an account?",
+  "LOGIN_NOW": "Login now",
+
+
+  "PAGE_TITLE": "Travel",
+    "NAVBAR_BRAND": "Travel the world",
+    "NAV_BLOGS": "Blogs",
+    "NAV_ADD_BLOG": "Add blog",
+    "NAV_PROFILE": "Profile",
+    "NAV_SIGN_OUT": "Sign out",
+    "WELCOME_HI": "Hi",
+    "WELCOME_ENJOY": "enjoy",
+    "WELCOME_JOIN_ADVENTURE": "Join the Adventure",
+    "WELCOME_EXPLORE": "EXPLORE",
+    "PROFILE_TITLE": "Your profile",
+    "PROFILE_AVATAR": "avatar",
+    "PROFILE_EDIT": "Edit profile",
+    "PROFILE_FULL_NAME": "Full Name",
+    "PROFILE_EMAIL": "Email",
+    "PROFILE_PHONE": "Phone",
+    "PROFILE_ADDRESS": "Address",
+    "ADD_BLOG_TITLE": "Add a blog",
+    "ADD_BLOG_TITLE_PLACEHOLDER": "Title",
+    "ADD_BLOG_CHOOSE_COUNTRY": "Choose a country",
+    "ADD_BLOG_COUNTRY_FRANCE": "France",
+    "ADD_BLOG_DESCRIPTION_PLACEHOLDER": "Description",
+    "ADD_BLOG_CHOOSE_IMAGE": "Choose an Image",
+    "ADD_BLOG_BUTTON": "Add",
+    "YOUR_BLOGS_TITLE": "Your blogs",
+    "USER_AVATAR": "User Avatar",
+    "FOOTER_COPYRIGHT": "© copyright. design and developed by gl",
+
+
+
+
+
+    "FORM_TITLE": "Form",
+    "EDIT_PROFILE_TITLE": "Edit Profile",
+    "FORM_FULL_NAME": "Full Name",
+    "FORM_ADDRESS": "Address",
+    "FORM_EMAIL": "Email",
+    "FORM_PHONE_NUMBER": "Phone Number",
+    "FORM_PASSWORD": "Password",
+    "FORM_PASSWORD_PLACEHOLDER": "Update your password",
+    "FORM_CONFIRM_PASSWORD": "Confirm Password",
+    "FORM_CONFIRM_PASSWORD_PLACEHOLDER": "Confirm your password",
+    "FORM_GENDER": "Gender",
+    "FORM_GENDER_MALE": "Male",
+    "FORM_GENDER_FEMALE": "Female",
+    "FORM_SUBMIT": "Register",
+    "FORM_CLOSE": "Close",
+
+
+
+
+
+
+
+
+
+
+
+
+    
+      "BUDGET": "Budget",
+      "LOW": "Low ($500 - $1000)",
+      "MEDIUM": "Medium ($1000 - $3000)",
+      "HIGH": "High ($3000+)",
+      "PREFERRED_CLIMATE": "Preferred Climate",
+      "WARM": "Warm",
+      "COLD": "Cold",
+      "TEMPERATE": "Temperate",
+      "ACTIVITIES": "Activities",
+      "BEACH": "Beach",
+      "HIKING": "Hiking",
+      "CITY_TOURS": "City Tours",
+      "CULTURE": "Culture",
+      "ADVENTURE": "Adventure",
+      "TRAVEL_DURATION": "Travel Duration",
+      "WEEKEND": "Weekend",
+      "ONE_WEEK": "1 Week",
+      "TWO_WEEKS": "2 Weeks",
+      "MORE_THAN_TWO_WEEKS": "More than 2 Weeks",
+      "GET_RECOMMENDATIONS": "Get Recommendations",
+      "NO_MATCHES": "No destinations match your preferences. Please try different options.",
+      "HIGHLIGHTS": "Highlights",
+      "BEST_TIME_TO_VISIT": "Best Time to Visit",
+      "KEY_ATTRACTIONS": "Key Attractions",
+      "INFO_TEXT_TRAVEL": "Complete the form and discover your future destination",
+     "ADDITIONAL_INFO_TRAVEL": "Welcome to our travel recommender service! Fill out the form on the right to receive personalized travel recommendations based on your preferences. Whether you're looking for adventure, relaxation, or cultural experiences, we've got you covered. Start your journey now and explore the world!",
+
+
+
+
+
+
+      "EXPLORE_NEXT_ADVENTURE": "Explore Your Next Adventure",
+  "PERSONALIZED_TRAVEL_RECOMMENDATIONS": "Get personalized travel recommendations and plan your perfect trip.",
+  "DISCOVER_NOW": "Discover Now"
+
+
+  
+      
+  }
+  

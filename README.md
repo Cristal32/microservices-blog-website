@@ -207,4 +207,3 @@ To send these logs to Zipkin, add the Zipkin starter in `pom.xml`:
     <artifactId>spring-cloud-starter-zipkin</artifactId>
 </dependency>
 ```
-

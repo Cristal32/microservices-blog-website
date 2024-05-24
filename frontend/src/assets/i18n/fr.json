@@ -1,0 +1,122 @@
+{
+    "JOURNEY_JOURNALS": "Journaux de voyage",
+    "EXPLORE_SHARE_INSPIRE": "Explorer, Partager, Inspirer !",
+    "WHAT_TO_DISCOVER": "Que voulez-vous découvrir ?",
+    "SEARCH": "Chercher",
+    "SELECT_ON_MAP": "Selectionner une localisation dans la map",
+    "TITLE": "Connexion et Inscription",
+    "IMAGE_ALT": "image ici",
+    "TEXT_1": "Chaque nouveau voyage est une nouvelle aventure",
+    "TEXT_2": "Restons connectés",
+    "LOGIN": "Connexion",
+    "ENTER_EMAIL": "Entrez votre email",
+    "ENTER_PASSWORD": "Entrez votre mot de passe",
+    "FORGOT_PASSWORD": "Mot de passe oublié?",
+    "SUBMIT": "Soumettre",
+    "NO_ACCOUNT": "Vous n'avez pas de compte?",
+    "SIGNUP_NOW": "Inscrivez-vous maintenant",
+    "SIGNUP": "Inscription",
+    "ENTER_NAME": "Entrez votre nom",
+    "ENTER_PHONE": "Entrez votre téléphone",
+    "ENTER_ADDRESS": "Entrez votre adresse",
+    "CONFIRM_PASSWORD": "Confirmez le mot de passe",
+    "MALE": "Homme",
+    "FEMALE": "Femme",
+    "HAVE_ACCOUNT": "Vous avez déjà un compte?",
+    "LOGIN_NOW": "Connectez-vous maintenant",
+
+
+
+
+
+
+
+    "PAGE_TITLE": "Voyage",
+    "NAVBAR_BRAND": "Voyagez le monde",
+    "NAV_BLOGS": "Blogs",
+    "NAV_ADD_BLOG": "Ajouter un blog",
+    "NAV_PROFILE": "Profil",
+    "NAV_SIGN_OUT": "Se déconnecter",
+    "WELCOME_HI": "Salut",
+    "WELCOME_ENJOY": "profitez",
+    "WELCOME_JOIN_ADVENTURE": "Rejoignez l'aventure",
+    "WELCOME_EXPLORE": "EXPLOREZ",
+    "PROFILE_TITLE": "Votre profil",
+    "PROFILE_AVATAR": "avatar",
+    "PROFILE_EDIT": "Modifier le profil",
+    "PROFILE_FULL_NAME": "Nom complet",
+    "PROFILE_EMAIL": "Email",
+    "PROFILE_PHONE": "Téléphone",
+    "PROFILE_ADDRESS": "Adresse",
+    "ADD_BLOG_TITLE": "Ajouter un blog",
+    "ADD_BLOG_TITLE_PLACEHOLDER": "Titre",
+    "ADD_BLOG_CHOOSE_COUNTRY": "Choisissez un pays",
+    "ADD_BLOG_COUNTRY_FRANCE": "France",
+    "ADD_BLOG_DESCRIPTION_PLACEHOLDER": "Description",
+    "ADD_BLOG_CHOOSE_IMAGE": "Choisissez une image",
+    "ADD_BLOG_BUTTON": "Ajouter",
+    "YOUR_BLOGS_TITLE": "Vos blogs",
+    "USER_AVATAR": "Avatar de l'utilisateur",
+    "FOOTER_COPYRIGHT": "© droit d'auteur. conçu et développé par gl",
+
+
+    "FORM_TITLE": "Formulaire",
+    "EDIT_PROFILE_TITLE": "Modifier le profil",
+    "FORM_FULL_NAME": "Nom complet",
+    "FORM_ADDRESS": "Adresse",
+    "FORM_EMAIL": "Email",
+    "FORM_PHONE_NUMBER": "Numéro de téléphone",
+    "FORM_PASSWORD": "Mot de passe",
+    "FORM_PASSWORD_PLACEHOLDER": "Mettez à jour votre mot de passe",
+    "FORM_CONFIRM_PASSWORD": "Confirmer le mot de passe",
+    "FORM_CONFIRM_PASSWORD_PLACEHOLDER": "Confirmez votre mot de passe",
+    "FORM_GENDER": "Genre",
+    "FORM_GENDER_MALE": "Homme",
+    "FORM_GENDER_FEMALE": "Femme",
+    "FORM_SUBMIT": "S'inscrire",
+    "FORM_CLOSE": "Fermer",
+
+
+
+
+
+
+
+
+    
+        "BUDGET": "Budget",
+        "LOW": "Bas (500 $ - 1000 $)",
+        "MEDIUM": "Moyen (1000 $ - 3000 $)",
+        "HIGH": "Élevé (3000 $+)",
+        "PREFERRED_CLIMATE": "Climat préféré",
+        "WARM": "Chaud",
+        "COLD": "Froid",
+        "TEMPERATE": "Tempéré",
+        "ACTIVITIES": "Activités",
+        "BEACH": "Plage",
+        "HIKING": "Randonnée",
+        "CITY_TOURS": "Visites de la ville",
+        "CULTURE": "Culture",
+        "ADVENTURE": "Aventure",
+        "TRAVEL_DURATION": "Durée du voyage",
+        "WEEKEND": "Week-end",
+        "ONE_WEEK": "1 Semaine",
+        "TWO_WEEKS": "2 Semaines",
+        "MORE_THAN_TWO_WEEKS": "Plus de 2 semaines",
+        "GET_RECOMMENDATIONS": "Obtenir des recommandations",
+        "NO_MATCHES": "Aucune destination ne correspond à vos préférences. Veuillez essayer d'autres options.",
+        "HIGHLIGHTS": "Points forts",
+        "BEST_TIME_TO_VISIT": "Meilleure période pour visiter",
+        "KEY_ATTRACTIONS": "Attractions clés",
+        "INFO_TEXT_TRAVEL": "Complétez le formulaire et découvrez votre future destination",
+        "ADDITIONAL_INFO_TRAVEL": "Bienvenue à notre service de recommandation de voyages ! Remplissez le formulaire à droite pour recevoir des recommandations de voyage personnalisées en fonction de vos préférences. Que vous recherchiez l'aventure, la détente ou des expériences culturelles, nous avons ce qu'il vous faut. Commencez votre voyage dès maintenant et explorez le monde !",
+
+
+
+        "EXPLORE_NEXT_ADVENTURE": "Explorez votre prochaine aventure",
+  "PERSONALIZED_TRAVEL_RECOMMENDATIONS": "Obtenez des recommandations de voyage personnalisées et planifiez votre voyage parfait.",
+  "DISCOVER_NOW": "Découvrir maintenant"
+            
+}
+  
+  
