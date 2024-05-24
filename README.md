@@ -2,8 +2,9 @@
 
 This project is a tourism blog application where each user can add a blog and access all blogs. The application uses a microservices architecture for better scalability and maintainability. The main components of the application are developed using Spring Boot for the backend and Angular for the frontend.
 
+
 ### Overview 
-#### 
+[![Watch the video](assets/interfaces/home.jpg)](assets/interfaces/Mobile%20App%20Presentation%20_%20Video%20Template.mp4)
 
 **Frameworks used:**
 - <span> Backend: Spring Boot 3.2.4 <img alt="Spring" width="30px" style="padding-right:10px;" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/spring/spring-original.svg" /> , Maven <img alt="Maven" width="30px" style="padding-right:10px;" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/maven/maven-original.svg" />, Java 17  <img alt="Java" width="30px" style="padding-right:10px;" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg" /></san>
@@ -20,6 +21,9 @@ This project is a tourism blog application where each user can add a blog and ac
 - <img align="left" alt="Postman" width="30px" style="padding-right:10px;" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postman/postman-original.svg" /> **Postman**: For backend Http requests test.
 
 ## Diagrams
+
+#### Use case
+<img src="assets\UML_use_case_diag.jpg" alt="spring mvc layers" width="900" height="500"> 
 
 #### Global architechture
 
@@ -43,7 +47,13 @@ This project is a tourism blog application where each user can add a blog and ac
     - [3. Views](#2-views)
 - [6. Distributed Tracing Sleuth & Zipkin](#6-distributed-tracing-sleuth--zipkin)
     - [1. What is Distributed Tracing?](#1-what-is-distributed-tracing?)
-
+    - [2. How do they work together?](#2-how-do-they-work-together)
+    - [3. Setting up Spring Cloud Sleuth](#3-setting-up-spring-cloud-sleuth)
+    - [4. Integrating with Zipkin](#4-integrating-with-zipkin)
+- [7. Containerizing microservices using Docker](#7-containerizing-microservices-using-docker)
+    - [1. Docker — Overview](#1-docker--overview)
+    - [2. Set Up](#2-set-up)
+- [8. Deploy microservices to local Kubernetes](#8-deploy-microservices-to-local-kubernetes)
 ## 0. Setting Up Microservices
 
 ### 1. Overview
@@ -67,11 +77,11 @@ Before you begin, ensure you have the following installed on your machine:
 ## 2. Create new microservices
 Create new microservices: blog, user and comments.
 
-- **Blog** : The Blog Service is responsible for managing blog-related operations. This includes creating, reading and updating blog posts. Each blog post contains information such as the destination, title, details and images.
+- **Blog** : The Blog Service is responsible for managing blog-related operations. This includes creating and reading blog posts. Each blog post contains information such as the destination, title, details, location and images.
 
 - **User** : The User Service handles user-related operations, including user registration, authentication, and profile management. This service is crucial for managing the users who can create and comment on blog posts.
 
-- **Comments** : The Comments Service is responsible for managing comments on blog posts. Users can add comments to blog posts, which can then be retrieved or updated. Each comment is associated with a specific blog post and user.
+- **Comments** : The Comments Service is responsible for managing comments on blog posts. Users can add comments to blog posts, which can then be retrieved. Each comment is associated with a specific blog post and user.
 
 
 ## 3. Communication between microservices using restTemplate
@@ -231,3 +241,72 @@ Docker is a **containerization technology** that allows developers to package an
 
 - **Registry:** Docker images can be stored and shared in registries, which act as centralized repositories.
 
+### 2. Set Up
+
+```bash
+blog:
+    image: blog-image
+    container_name: blog
+    ports:
+      - "9097:9097"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/blogs
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=2001195
+      - SPRING_ZIPKIN_BASE_URL=http://zipkin:9411
+      - SPRING_SLEUTH_SAMPLER_PROBABILITY=1.0
+      - KAFKA_BOOTSTRAP_SERVERS=kafka:9092
+    networks:
+      - mynetwork
+```
+
+<img src="assets/images/Screenshot 2024-05-24 103853.png" alt="spring mvc layers" width="800" height="300">
+
+## 8. Deploy microservices to Kubernetes
+### 1. What is Kubernetes ?
+Kubernetes (also known as k8s or “kube”) is an open source container orchestration platform that automates many of the manual processes involved in deploying, managing, and scaling containerized applications.
+
+### 2. Setting up
+- For Google cloud, you need to tag your local docker image using correct location, project and repository names as shown below.
+
+```bash
+docker tag SOURCE-IMAGE LOCATION-docker.pkg.dev/PROJECT-ID/REPOSITORY/IMAGE
+Example: docker tag my-image us-east1-docker.pkg.dev/my-project/my-repo/test-image
+```
+
+- Push the tagged docker image into Google artifactory
+
+```bash
+docker push LOCATION-docker.pkg.dev/PROJECT-ID/REPOSITORY/IMAGE:TAG
+```
+
+- Deploy your docker containers into GKE (Google Kubernetes Engine)
+```bash
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: blog
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: blog
+  template:
+    metadata:
+      labels:
+        app: blog
+    spec:
+      containers:
+        - name: blog
+          image: lam2001/website1:blog-image-latest
+          ports:
+            - containerPort: 9097
+          env:
+            - name: SPRING_DATASOURCE_URL
+              value: jdbc:postgresql://postgres:5432/blogs
+            - name: SPRING_DATASOURCE_USERNAME
+              value: "postgres"
+            - name: SPRING_DATASOURCE_PASSWORD
+              value: "2001195"
+
+```
