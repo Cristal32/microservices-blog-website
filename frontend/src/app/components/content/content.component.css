@@ -1,0 +1,161 @@
+.titre1 {
+  font-size: 42px;
+  margin-top: 120px;
+  margin-left: 70px;
+  margin-bottom: 10px;
+}
+
+#first-content {
+  display: flex;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.8);
+  width: 100%;
+  margin: 0 auto;
+  margin-top: 30px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(45, 11, 169, 0.2);
+  flex-wrap: wrap; /* Allow flex items to wrap to the next line */
+}
+
+.wrapper {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap; /* Ensure that items wrap */
+}
+
+.image-box img {
+  margin-left: 26px;
+  margin-top: 40px;
+  width: 750px;
+  height: 390px;
+  object-fit: cover; /* Maintain the aspect ratio and cover the entire box */
+}
+
+.text-box {
+  margin-top: 80px;
+  margin-left: 70px;
+  margin-right: 10px;
+  color: #100f0f;
+  width: 60%;
+  flex-grow: 1; /* Allow the text-box to grow */
+}
+
+.text-box h2 {
+  font-size: 38px;
+  color: #060b5c;
+  margin-bottom: 50px;
+}
+
+.text-box p {
+  margin-right: 150px;
+  font-size: 22px;
+  line-height: 2.1;
+}
+
+@media only screen and (max-width: 1600px) {
+  .wrapper {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .image-box img {
+      max-width: 100%;
+      margin-top: 0; /* Reset the margin-top on smaller screens */
+  }
+
+  .text-box {
+      width: 100%;
+      padding: 20px; /* Add some padding to the text for better readability on smaller screens */
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.comment-section {
+  background-color: #f8e6f2; /* light pink background */
+  padding: 20px;
+  width: 100vw; /* Full width of the viewport */
+  margin-left: calc(-50vw + 50%);
+}
+
+.be-comment-block {
+  background-color: #f3e5f5; /* light purple background */
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 800px; /* Set a max-width to limit the content width */
+  margin: 0 auto; /* Center the content */
+}
+
+.be-comment {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  background-color: #ffffff; /* white background for individual comments */
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.be-img-comment img {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  margin-right: 15px;
+}
+
+.be-comment-content {
+  max-width: calc(100% - 70px);
+}
+
+.be-comment-name {
+  font-weight: bold;
+  color: #251257; /* dark purple text color */
+}
+
+.be-comment-time {
+  display: block;
+  font-size: 0.9em;
+  color: #999;
+  margin-bottom: 5px;
+}
+
+.be-comment-text {
+  font-size: 1em;
+  color: #333;
+}
+
+.form-block {
+  background-color: #ffffff; /* white background for the form */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  max-width: 800px; /* Set a max-width to limit the form width */
+  margin: 0 auto; /* Center the form */
+}
+
+.form-input {
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 1em;
+  color: #333;
+}
+
+.btn-primary {
+  background-color: #251257; /* pink button */
+  border-color: #251257;
+  color: #fff;
+}

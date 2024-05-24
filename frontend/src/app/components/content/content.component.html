@@ -1,0 +1,206 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+    <head>
+        <!-- meta data -->
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+        <!--font-family-->
+		<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&amp;subset=devanagari,latin-ext" rel="stylesheet">
+        
+        <!-- title of site -->
+        <title>Travel</title>
+
+        <!-- For favicon png -->
+		<link rel="shortcut icon" type="image/icon" href="/assets/logo/favicon.png"/>
+       
+        <!--font-awesome.min.css-->
+        <link rel="stylesheet" href="/assets/css/font-awesome.min.css">
+
+		<!--flat icon css-->
+		<link rel="stylesheet" href="/assets/css/flaticon.css">
+
+		<!--animate.css-->
+        <link rel="stylesheet" href="/assets/css/animate.css">
+
+        <!--owl.carousel.css-->
+        <link rel="stylesheet" href="/assets/css/owl.carousel.min.css">
+		<link rel="stylesheet" href="/assets/css/owl.theme.default.min.css">
+		
+        <!--bootstrap.min.css-->
+        <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+		
+		<!-- bootsnav -->
+		<link rel="stylesheet" href="/assets/css/bootsnav.css" >	
+        
+        <!--style.css-->
+        <link rel="stylesheet" href="/assets/css/style.css">
+        
+        <!--responsive.css-->
+        <link rel="stylesheet" href="/assets/css/responsive.css">
+
+		<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+        
+      
+
+    </head>
+	
+	<body>
+	
+		
+		<!-- top-area Start -->
+		<header class="top-area">
+			<div class="header-area">
+				<!-- Start Navigation -->
+			    <nav class="navbar navbar-default bootsnav navbar-fixed dark  no-background   navbar-sm " >
+
+			        <div class="container" >
+
+			            <!-- Start Header Navigation -->
+			            <div class="navbar-header">
+			                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
+			                    <i class="fa fa-bars"></i>
+			                </button>
+							<a class="navbar-brand" href="content" style="color:black" > <i class="fa fa-map-marker" style="font-size: 35px;  color:red ;filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.5))"></i> {{blog.country}}</a>
+			            </div><!--/.navbar-header-->
+			            <!-- End Header Navigation -->
+
+			            <!-- Collect the nav links, forms, and other content for toggling -->
+			            <div class="collapse navbar-collapse menu-ui-design" id="navbar-menu">
+			                <ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
+			                <li class=" smooth-menu active"></li>
+							<li class="smooth-menu"><a href="home"><i class="fa fa-home" aria-hidden="true"></i> Home</a></li>
+								<li class="smooth-menu"><a href="sign-in"><i class="fa fa-sign-out" aria-hidden="true"></i> Sign out</a></li>
+			                 
+			                   
+			                </ul><!--/.nav -->
+			            </div><!-- /.navbar-collapse -->
+			        </div><!--/.container-->
+			    </nav><!--/nav-->
+			    <!-- End Navigation -->
+			</div><!--/.header-area-->
+
+		    <div class="clearfix"></div>
+
+		</header><!-- /.top-area-->
+		<!-- top-area End -->
+	
+		<div *ngIf="blog">
+				<h1 class="titre1">{{ translatedTitle }}</h1>
+			<section id="first-content">
+			  <div class="wrapper">
+				<span>
+					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-globe-americas" viewBox="0 0 16 16">
+						<path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0M2.04 4.326c.325 1.329 2.532 2.54 3.717 3.19.48.263.793.434.743.484q-.121.12-.242.234c-.416.396-.787.749-.758 1.266.035.634.618.824 1.214 1.017.577.188 1.168.38 1.286.983.082.417-.075.988-.22 1.52-.215.782-.406 1.48.22 1.48 1.5-.5 3.798-3.186 4-5 .138-1.243-2-2-3.5-2.5-.478-.16-.755.081-.99.284-.172.15-.322.279-.51.216-.445-.148-2.5-2-1.5-2.5.78-.39.952-.171 1.227.182.078.099.163.208.273.318.609.304.662-.132.723-.633.039-.322.081-.671.277-.867.434-.434 1.265-.791 2.028-1.12.712-.306 1.365-.587 1.579-.88A7 7 0 1 1 2.04 4.327Z"/>
+					  </svg> 
+					  {{ translatedCountry }}
+				</span>
+				<div class="image-box">
+				  <img [src]="'data:image/jpeg;base64,' + blog.image" alt="hhh">
+				</div>
+				<div>
+					<span>
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
+							<path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/>
+						</svg>
+						<button style="margin-top: 10px; width:auto" (click)="navigateToMap()">View on Map</button>
+					</span>
+				</div>
+				<div class="text-box">
+				  <div>
+					<p>{{ translatedDescription }}</p>
+				  </div>
+				</div>
+			  </div>
+			</section>
+		  </div>
+		
+  <div class="container-fluid comment-section">
+    <div class="be-comment-block">
+      <h1 class="comments-title">Comments ({{ comments.length }})</h1>
+      <div *ngFor="let comment of comments" class="be-comment">
+        <div class="be-img-comment">
+          <img [src]="getUserImage(comment.gender)" alt="User Image" class="be-ava-comment">
+        </div>
+        <div class="be-comment-content">
+          <span class="be-comment-name">{{ comment.userName }}</span>
+          <span class="be-comment-time">
+            <i class="fa fa-clock-o"></i>
+            {{ comment.date | date:'medium' }}
+          </span>
+          <p class="be-comment-text">{{ comment.translatedContent || comment.content }}</p>
+        </div>
+      </div>
+      <form (ngSubmit)="submitComment()" class="form-block">
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="form-group">
+              <textarea [(ngModel)]="newComment.content" name="commentText" class="form-input" required placeholder="Your comment" style="color:black;"></textarea>
+            </div>
+          </div>
+          <div class="col-xs-12">
+            <button type="submit" class="btn btn-primary pull-right">Submit</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+    
+	
+
+     
+	
+		
+		<!--footer-copyright start-->
+		<footer id="footer-copyright" class="footer-copyright">
+			<div class="container">
+				<div class="hm-footer-copyright text-center">
+					<p>
+						&copy; copyright. design and developed by <a href="https://www.themesine.com/">gl</a>
+					</p><!--/p-->
+				</div><!--/.text-center-->
+			</div><!--/.container-->
+
+			<div id="scroll-Top">
+				<div class="return-to-top">
+					<i class="fa fa-angle-up " id="scroll-top" ></i>
+				</div>
+				
+			</div><!--/.scroll-Top-->
+			
+        </footer><!--/.footer-copyright-->
+		<!--footer-copyright end-->
+		
+		<!-- Include all js compiled plugins (below), or include individual files as needed -->
+
+		<script src="/assets/js/jquery.js"></script>
+        
+        <!--modernizr.min.js-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+		
+		<!--bootstrap.min.js-->
+        <script src="/assets/js/bootstrap.min.js"></script>
+		
+		<!-- bootsnav js -->
+		<script src="/assets/js/bootsnav.js"></script>
+		
+		<!-- jquery.sticky.js -->
+		<script src="/assets/js/jquery.sticky.js"></script>
+		
+		<!-- for progress bar start-->
+
+		<!-- progressbar js -->
+		<script src="/assets/js/progressbar.js"></script>
+
+		<!-- appear js -->
+		<script src="/assets/js/jquery.appear.js"></script>
+
+		<!-- for progress bar end -->
+
+
+
+
+

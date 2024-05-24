@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ 'TITLE' | translate }}</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+  <div class="container">
+    <input type="checkbox" id="flip">
+    <div class="cover">
+      <div>
+        <img src="/assets/images/bg.jpg" alt="{{ 'IMAGE_ALT' | translate }}">
+        <div class="text">
+          <span class="text-1">{{ 'TEXT_1' | translate }}</span>
+          <span class="text-2">{{ 'TEXT_2' | translate }}</span>
+        </div>
+      </div>
+    </div>
+    <div class="forms">
+      <div class="form-content">
+        <div class="login-form">
+          <div class="title">{{ 'LOGIN' | translate }}</div>
+          <form action="#">
+            <div class="input-boxes">
+              <div class="input-box">
+                <i class="fas fa-envelope"></i>
+                <input type="text" placeholder="{{ 'ENTER_EMAIL' | translate }}" [(ngModel)]="u.email" name="email" required>
+              </div>
+              <div class="input-box">
+                <i class="fas fa-lock"></i>
+                <input type="password" placeholder="{{ 'ENTER_PASSWORD' | translate }}" [(ngModel)]="u.password" name="password" required>
+              </div>
+              <div class="text"><a href="#">{{ 'FORGOT_PASSWORD' | translate }}</a></div>
+              <div class="button input-box">
+                <input type="submit" value="{{ 'SUBMIT' | translate }}" (click)="getUser()">
+              </div>
+              <div class="text sign-up-text">{{ 'NO_ACCOUNT' | translate }} <label for="flip">{{ 'SIGNUP_NOW' | translate }}</label></div>
+            </div>
+          </form>
+        </div>
+        <div class="signup-form">
+          <div class="title">{{ 'SIGNUP' | translate }}</div>
+          <form action="#">
+            <div class="input-boxes">
+              <div class="input-box">
+                <i class="fas fa-user"></i>
+                <input type="text" name="name" [(ngModel)]="added.name" placeholder="{{ 'ENTER_NAME' | translate }}" required>
+              </div>
+              <div class="input-box">
+                <i class="fas fa-envelope"></i>
+                <input type="text" name="email" [(ngModel)]="added.email" placeholder="{{ 'ENTER_EMAIL' | translate }}" required>
+              </div>
+              <div class="input-box">
+                <i class="fa fa-phone" aria-hidden="true"></i>
+                <input type="text" name="phone" [(ngModel)]="added.phone" placeholder="{{ 'ENTER_PHONE' | translate }}" required>
+              </div>
+              <div class="input-box">
+                <i class="fa fa-address-card" aria-hidden="true"></i>
+                <input type="text" name="adresse" [(ngModel)]="added.adresse" placeholder="{{ 'ENTER_ADDRESS' | translate }}" required>
+              </div>
+              <div class="input-box">
+                <i class="fas fa-lock"></i>
+                <input type="password" name="password" [(ngModel)]="added.password" placeholder="{{ 'ENTER_PASSWORD' | translate }}" required>
+              </div>
+              <div class="input-box">
+                <i class="fas fa-check"></i>
+                <input type="password" placeholder="{{ 'CONFIRM_PASSWORD' | translate }}" required>
+              </div>
+              <div class="input-box">
+                <input type="radio" id="male" name="gender" value="1" [(ngModel)]="added.gender" style="width:18px">
+                <label for="male">{{ 'MALE' | translate }}</label>
+                <span style="margin: 0 15px;"></span>
+                <input type="radio" id="female" name="gender" value="0" [(ngModel)]="added.gender" style="width:18px">
+                <label for="female">{{ 'FEMALE' | translate }}</label>
+              </div>
+              <div class="button input-box">
+                <input type="submit" value="{{ 'SUBMIT' | translate }}" (click)="addUser()">
+              </div>
+              <div class="text sign-up-text">{{ 'HAVE_ACCOUNT' | translate }} <label for="flip">{{ 'LOGIN_NOW' | translate }}</label></div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+</body>
+</html>
