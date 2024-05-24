@@ -99,7 +99,7 @@ Steps :
 - look up the service using eureka server.
 - eureka server will return the service information.
 
-<img src="docs\images\eureka-service-discovery.jpeg" alt="spring mvc layers" width="800" height="300">  
+<img src="assets\images\eureka-service-discovery.jpeg" alt="spring mvc layers" width="800" height="300">  
 
 #### 3. How do I get set up?
 
@@ -159,7 +159,7 @@ public class ExampleMicroserviceApplication {
 API gateway acts as a single point of entry for a collection of microservices. In simple words, all microservices can be accessed through a single port or route. It is a non-blocking and reactive gateway that provides several features like routing, filtering, load balancing, circuit breaking, and more. 
 
 ### 1. Architecture
-<img src="docs/images/gateway_architecture.webp" alt="spring mvc layers" width="800" height="300">
+<img src="assets/images/gateway_architecture.webp" alt="spring mvc layers" width="800" height="300">
 
 - The process begins with the client sending a request to the API gateway. 
 - The request first goes to the Gateway mapping handler. It uses Predicate to check whether a request matches a route. 
@@ -178,7 +178,7 @@ API gateway acts as a single point of entry for a collection of microservices. I
 ```
 
 ## 6. Distributed Tracing Sleuth & Zipkin
-<img src="docs/images/zipkin.webp" alt="spring mvc layers" width="800" height="300">
+<img src="assets/images/zipkin.webp" alt="spring mvc layers" width="800" height="300">
 
 ### 1. What is Distributed Tracing?
 Distributed tracing is a method used to monitor applications, especially those built using a microservices architecture. Each microservice contributes a small amount to the overall functionality, and it’s beneficial to trace how requests pass through these services.
