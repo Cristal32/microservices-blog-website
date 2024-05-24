@@ -46,7 +46,7 @@ This project is a tourism blog application where each user can add a blog and ac
     - [2. Setup Spring Cloud Gateway](#2-setup-spring-cloud-gateway)
     - [3. Views](#2-views)
 - [6. Distributed Tracing Sleuth & Zipkin](#6-distributed-tracing-sleuth--zipkin)
-    - [1. What is Distributed Tracing?](#1-what-is-distributed-tracing?)
+    - [1. What is Distributed Tracing?](#1-what-is-distributed-tracing)
     - [2. How do they work together?](#2-how-do-they-work-together)
     - [3. Setting up Spring Cloud Sleuth](#3-setting-up-spring-cloud-sleuth)
     - [4. Integrating with Zipkin](#4-integrating-with-zipkin)
@@ -54,6 +54,8 @@ This project is a tourism blog application where each user can add a blog and ac
     - [1. Docker — Overview](#1-docker--overview)
     - [2. Set Up](#2-set-up)
 - [8. Deploy microservices to local Kubernetes](#8-deploy-microservices-to-local-kubernetes)
+- [9. Deploy with Gitlab](#9-deploy-with-gitlab)
+    
 ## 0. Setting Up Microservices
 
 ### 1. Overview
@@ -310,3 +312,9 @@ spec:
               value: "2001195"
 
 ```
+
+## 9. Deploy with Gitlab
+
+We started by manually pushing our code into Gitlab. This is the intended pipeline we're aiming to achieve:
+
+<img src="assets/images/gitlab.PNG" alt="spring mvc layers" width="800" height="300">
