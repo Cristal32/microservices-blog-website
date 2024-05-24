@@ -20,7 +20,7 @@ This project is a tourism blog application where each user can add a blog and ac
 
 #### Global architechture
 
-<img src="docs\images\architecture.jpg" alt="spring mvc layers" width="800" height="300"> 
+<img src="assets\images\architecture.jpg" alt="spring mvc layers" width="900" height="500"> 
 
 ## Content
 
