@@ -1,0 +1,128 @@
+image: docker:latest
+
+services:
+  - name: docker:dind
+    command: ["--tls=false", "--host=tcp://0.0.0.0:2375", "--storage-driver=overlay2"]
+
+variables:
+  DOCKER_DRIVER: overlay2
+  DOCKER_TLS_CERTDIR: ""
+  CI_REGISTRY: docker.io
+  CI_REGISTRY_IMAGE: lam2001/website1  # Remplacez par votre référentiel Docker Hub
+  DOCKER_IMAGE_TAG: $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
+  DOCKER_HOST: tcp://docker:2375
+
+before_script:
+  # Attendre que Docker soit prêt
+  - while (! docker info > /dev/null 2>&1); do sleep 1; done
+  # Connexion à Docker Hub
+  - echo $CI_REGISTRY_PASSWORD | docker login -u $CI_REGISTRY_USER --password-stdin
+
+stages:
+  - build
+  - test
+  - deploy
+
+# Build Docker images for each service
+build_discovery:
+  stage: build
+  script:
+    - docker build -t $CI_REGISTRY_IMAGE:discovery-image-latest -f discovery/Dockerfile discovery/
+    - docker push $CI_REGISTRY_IMAGE:discovery-image-latest
+  only:
+    - master
+
+build_user:
+  stage: build
+  script:
+    - docker build -t $CI_REGISTRY_IMAGE:user-image-latest -f user/Dockerfile user/
+    - docker push $CI_REGISTRY_IMAGE:user-image-latest
+  only:
+    - master
+
+build_blog:
+  stage: build
+  script:
+    - docker build -t $CI_REGISTRY_IMAGE:blog-image-latest -f blog/Dockerfile blog/
+    - docker push $CI_REGISTRY_IMAGE:blog-image-latest
+  only:
+    - master
+
+build_comments:
+  stage: build
+  script:
+    - docker build -t $CI_REGISTRY_IMAGE:comments-image-latest -f comments/Dockerfile comments/
+    - docker push $CI_REGISTRY_IMAGE:comments-image-latest
+  only:
+    - master
+
+build_gateway:
+  stage: build
+  script:
+    - docker build -t $CI_REGISTRY_IMAGE:gateway-image-latest -f gateway/Dockerfile gateway/
+    - docker push $CI_REGISTRY_IMAGE:gateway-image-latest
+  only:
+    - master
+
+build_frontend:
+  stage: build
+  script:
+    - docker build -t $CI_REGISTRY_IMAGE:interface-latest -f frontend/Dockerfile frontend/
+    - docker push $CI_REGISTRY_IMAGE:interface-latest
+  only:
+    - master
+
+# Test individual services after building
+test_user:
+  stage: test
+  image: maven:3.8.4-eclipse-temurin-17
+  before_script:
+    - apt-get update && apt-get install -y docker.io
+  script:
+    - cd user
+    - mvn test
+  only:
+    - master
+
+test_blog:
+  stage: test
+  image: maven:3.8.4-eclipse-temurin-17
+  before_script:
+    - apt-get update && apt-get install -y docker.io
+  script:
+    - cd blog
+    - mvn test
+  only:
+    - master
+
+test_comments:
+  stage: test
+  image: maven:3.8.4-eclipse-temurin-17
+  before_script:
+    - apt-get update && apt-get install -y docker.io
+  script:
+    - cd comments
+    - mvn test
+  only:
+    - master
+
+# Deploy services with Kubernetes
+# Deploy services with Kubernetes
+deploy_services:
+  stage: deploy
+  image: google/cloud-sdk:latest
+  script:
+    # Authentification avec gcloud
+    - echo $GCLOUD_SERVICE_KEY | base64 -d > ${HOME}/gcp-key.json
+    - gcloud auth activate-service-account --key-file=${HOME}/gcp-key.json
+    # Configuration de kubectl
+    - gcloud container clusters get-credentials my-cluster --zone us-central1-a --project lamyaeproject-423911
+    # Déploiement des services avec kubectl
+    - kubectl apply -f K8s/services/discovery/deployment.yml
+    - kubectl apply -f K8s/services/user/deployment.yml
+    - kubectl apply -f K8s/services/blog/deployment.yml
+    - kubectl apply -f K8s/services/comments/deployment.yml
+    - kubectl apply -f K8s/services/gateway/deployment.yml
+    - kubectl apply -f K8s/services/interface/deployment.yml
+  only:
+    - master
