@@ -1,0 +1,46 @@
+eureka:
+  client:
+    register-with-eureka: false
+    service-url:
+      defaultZone: http://discovery:8761/eureka/
+server:
+  port: 8222
+spring:
+  application:
+    name: gateway
+
+  cloud:
+    gateway:
+      default-filters:
+        - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedMethods: "*"
+            allowedHeaders: "*"
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: user
+          uri: http://user:9098
+          predicates:
+            - Path=/users/**
+        - id: blog
+          uri: http://blog:9097
+          predicates:
+            - Path=/blogs/**
+        - id: comments
+          uri: http://comments:9099
+          predicates:
+            - Path=/comments/**
+
+
+management:
+  tracing:
+    sampling:
+      probability: 1.0 # only for testing purpose, switch back to 0.1 for production code
+  zipkin:
+    tracing:
+      endpoint: http://zipkin:9411/api/v2/spans

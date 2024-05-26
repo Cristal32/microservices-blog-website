@@ -1,0 +1,47 @@
+eureka:
+  instance:
+    hostname: blog
+  client:
+    service-url:
+      defaultZone: http://discovery:8761/eureka/
+server:
+  port: 9097
+spring:
+  application:
+    name: blog
+  kafka:
+    bootstrap-servers: kafka:9092
+    consumer:
+      group-id: comment-service
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring:
+          json:
+            trusted:
+              packages: "*"
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://postgres:5432/blogs
+    username: postgres
+    password: 2001195
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+
+
+
+management:
+  tracing:
+    sampling:
+      probability: 1.0 # only for testing purpose, switch back to 0.1 for production code
+  zipkin:
+    tracing:
+      endpoint: http://zipkin:9411/api/v2/spans
