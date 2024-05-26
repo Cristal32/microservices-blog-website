@@ -349,7 +349,7 @@ spec:
 
 We started by manually pushing our code into Gitlab. This is the intended pipeline we're aiming to achieve:
 
-<img src="assets/images/gitlab.PNG" alt="spring mvc layers" width="800" height="600">
+<img src="assets/images/gitlab.PNG" alt="spring mvc layers" width="800" height="300">
 In the GitLab pipeline, we build and push Docker images for various services to Docker Hub. The services are then tested using Maven and finally deployed to a Kubernetes cluster using Google Cloud SDK. The deployment applies Kubernetes deployment configurations for each service
 
 <img src="assets/images/gitlab.png" alt="spring mvc layers" width="800" height="600">
