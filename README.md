@@ -382,3 +382,5 @@ For dynamic content such as blog posts and user comments, we use the Google Clou
 When a user submits a blog post or comment, the content is sent to the Google Cloud Translator API, which returns the translated text.
 
 The translated content is then displayed on the website, providing a seamless multilingual experience for all users.
+### Note:to run the application, use Docker Compose in the backend folder, utilizing the init-db folder for initializing the databases.
+
