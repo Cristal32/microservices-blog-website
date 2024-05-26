@@ -290,7 +290,7 @@ blog:
       - mynetwork
 ```
 
-<img src="assets/images/dockerhub.png" alt="spring mvc layers" width="800" height="300">
+<img src="assets/images/dockerhub.png" alt="spring mvc layers" width="800" height="600">
 
 ## 8. Deploy microservices to Kubernetes
 
