@@ -275,7 +275,7 @@ Docker is a **containerization technology** that allows developers to package an
 
 ```bash
 blog:
-    image: blog-image
+    image: lam2001/website1:blog-image-latest
     container_name: blog
     ports:
       - "9097:9097"
@@ -290,7 +290,7 @@ blog:
       - mynetwork
 ```
 
-<img src="assets/images/Screenshot 2024-05-24 103853.png" alt="spring mvc layers" width="800" height="300">
+<img src="assets/images/dockerhub.png" alt="spring mvc layers" width="800" height="300">
 
 ## 8. Deploy microservices to Kubernetes
 
