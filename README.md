@@ -57,13 +57,7 @@ This project is a tourism blog application where each user can add a blog and ac
   - [2. Set Up](#2-set-up)
 - [8. Deploy microservices to local Kubernetes](#8-deploy-microservices-to-local-kubernetes)
 - [9. Deploy with Gitlab](#9-deploy-with-gitlab)
-  <<<<<<< HEAD
-
-=======
-
 - [10. Maps functionality](#10-maps-functionality)
-
-> > > > > > > 3760f1e67752fa6e1569fa2fa09e3c671fd24c8c
 
 ## 0. Setting Up Microservices
 
